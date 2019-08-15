@@ -1,3 +1,47 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// index
+.container-user{
+  height:100vh;
+  width:100vw;
+  display:flex;
+  align-content: center;  
+  &__box{
+    width:400px;
+    height:400px;
+    margin:auto;
+    border:1px solid gray;
+    overflow: auto;
+    caption{
+      font-size: 1.5rem;
+    }
+    th,td{
+      text-align: center;
+    }
+    th{
+      width:50%;
+    }
+  }
+}
+
+// show
+
+.container-show{
+  height:100vh;
+  width:100vw;
+  &__user-card{
+    .cards{
+      display: flex;
+      justify-content: center;
+      align-items: center;        
+      .card{
+        display:block;
+        width:400px;
+        height:400px;
+        text-align: left;
+      }
+    }
+  }
+}

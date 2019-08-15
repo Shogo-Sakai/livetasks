@@ -1,0 +1,16 @@
+<div class="container-user">
+  <div class="container-user__box">
+    <table border="1px" bordercolor="#ff0000" class="container-user__box__table">
+      <caption>ユーザー一覧</caption>
+        <tr>
+          <th>ユーザーID</th>
+          <th>名前</th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><a href="<%= user_path(id: user.id) %>"><%= user.nickname %></a></td>
+          </tr>
+        <% end %>
+  </div>
+</div>
