@@ -16,19 +16,25 @@
  */
  @import 'materialize';
 
- html, body, p, ul, li{
+ html, body, p, ul, li, div{
    margin:0;
    padding:0;
  }
 
- body{
+html{
+  height:100vh;
+  width:100vw;
+}
+
+body{
   background: image-url("home_logo.JPG");
-  height: 100vh;
-  width: 100vw;
-  background-size: contain;
+  background-size: 100vh auto;
+  height: 100%;
+  width: 100%;
   .background-color{
     height:100%;
     width:100%;
     background-color: rgba(5, 150, 82, 0.55);
   }
 }
+

@@ -1,0 +1,78 @@
+<div class="container-input-user">
+  <div class="container-input-user__box">
+    <%= form_with model: @user, local: true do |f| %>
+      <div class="row">
+        <form class="col s12">
+
+        <%# ニックネーム %>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.text_field :nickname, placeholder: "Input your name or nickname here", id:"nickname", type:"text", class:"validate" %>
+              <%= f.label :nickname %>
+            </div>
+          </div>
+
+          <%# メールアドレス %>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.text_field :email, id:"email", type:"email", class:"validate" %>
+              <%= f.label :email %>
+              <span class="helper-text" data-error="There aren't any @ in your input." data-success="right">Helper text</span>
+            </div>
+          </div>
+
+          <%# パスワード %>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.text_field :password, id:"password", type:"password", class:"validate" %>
+              <%= f.label :password %>
+            </div>
+          </div>
+
+          <%# 誕生日 %>
+          <div class="row">
+            <%= f.label :birthday %>
+            </br>            
+            <div class="input-field col s12 m2">
+              <%= f.select(:birthyear, @year, {prompt:"Year"},{class:"browser-default", id:"birthyear"}) %>
+            </div>
+            <div class="input-field col s12 m2">
+              <%= f.select(:birthmonth, @month, {prompt:"Month"}, {id:"birthmonth", class:"browser-default"}) %>
+            </div>
+            <div class="input-field col s12 m2">
+              <%= f.select(:birthday, @day, {prompt:"Day"}, {id:"birthday", class:"browser-default"}) %>
+            </div>
+          </div>
+
+          <%# 年齢 %>
+          <div class="row">
+            <%= f.label :age %></br>
+            <label class="age-label">
+              <input type="checkbox" class="col s12 m2 left age" id="age-checkbox" />
+              <span>Use Birthday to Calculate age?</span>
+            </label>
+            <div class="input-field col s12 m2 center">
+              <%= f.text_field :age , id:"age", class:"age"%>
+            </div>
+          </div>
+
+          <%# プロフィール %>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.text_area :profile, id:"profile", class:"materialize-textarea", "data-length":"140" %>
+              <%= f.label :profile %>
+            </div>
+          </div>
+          
+          <%# サブミットボタン %>
+          <div class="row center">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+
+        </form>
+      </div>
+    <% end %>
+  </div>
+</div>

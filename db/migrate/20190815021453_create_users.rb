@@ -5,7 +5,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string    :email,           null: false
       t.string    :password_digest, null: false
       t.string    :profile,         default: ""
-      t.datetime  :birthday,        default: ""
+      t.integer   :birthyear,       default: ""
+      t.integer   :birthmonth,      default: ""
+      t.integer   :birthday,        default: ""
       t.integer   :age,             default: ""
       t.integer   :gender,          default: ""
       t.string    :image,           default: ""

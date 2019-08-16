@@ -37,7 +37,9 @@ ActiveRecord::Schema.define(version: 2019_08_15_071200) do
     t.string "email", null: false
     t.string "password_digest", null: false
     t.string "profile", default: ""
-    t.datetime "birthday"
+    t.integer "birthyear"
+    t.integer "birthmonth"
+    t.integer "birthday"
     t.integer "age"
     t.integer "gender"
     t.string "image", default: ""

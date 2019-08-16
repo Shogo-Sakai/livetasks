@@ -12,6 +12,7 @@
     background-color:rgb(255, 255, 255);
     width:400px;
     height:400px;
+    padding:15px;
     margin:auto;
     border:1px solid gray;
     overflow: auto;
@@ -37,7 +38,7 @@
     .cards{
       display: flex;
       justify-content: center;
-      align-items: center;        
+      align-content: center;        
       .card{
         margin-top :100px;
         background-color: white;
@@ -49,6 +50,32 @@
           background-color: white;
         }
       }
+    }
+  }
+}
+
+// signup
+
+.container-input-user{
+  box-sizing: border-box;
+  height:100vh;
+  width:100vw;
+  margin:0;
+  display:flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  overflow: auto;
+  &__box{
+    box-sizing: border-box;
+    width:60%;
+    max-height:550px;
+    padding:15px;
+    border-radius: 30px;
+    background-color: white;
+    overflow: auto;
+    .row{
+      margin:0;
     }
   }
 }
