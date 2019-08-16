@@ -1,19 +1,23 @@
 <div class="container-input-user">
   <div class="container-input-user__box">
-    <%= form_with model: @user, local: true do |f| %>
-      <div class="row">
+    <%= form_with model: @user, local: true, class:"inputs" do |f| %>
+      <div class="row contents">
         <form class="col s12">
 
+          <%# タイトル %>
+          <p class="registration-title center">
+            New User Registration
+          </p>
         <%# ニックネーム %>
-          <div class="row">
+          <div class="row nickname">
             <div class="input-field col s12">
-              <%= f.text_field :nickname, placeholder: "Input your name or nickname here", id:"nickname", type:"text", class:"validate" %>
+              <%= f.text_field :nickname, id:"nickname", type:"text", class:"validate" %>
               <%= f.label :nickname %>
             </div>
           </div>
 
           <%# メールアドレス %>
-          <div class="row">
+          <div class="row email">
             <div class="input-field col s12">
               <%= f.text_field :email, id:"email", type:"email", class:"validate" %>
               <%= f.label :email %>
@@ -22,7 +26,7 @@
           </div>
 
           <%# パスワード %>
-          <div class="row">
+          <div class="row password">
             <div class="input-field col s12">
               <%= f.text_field :password, id:"password", type:"password", class:"validate" %>
               <%= f.label :password %>
@@ -30,7 +34,7 @@
           </div>
 
           <%# 誕生日 %>
-          <div class="row">
+          <div class="row birthyear birthmonth birthday">
             <%= f.label :birthday %>
             </br>            
             <div class="input-field col s12 m2">
@@ -46,7 +50,7 @@
 
           <%# 年齢 %>
           <%# <div class="row"> %>
-            <%= f.label :age %>
+            <%= f.label :age , class:"age"%>
             <label class="age-label">
               <input type="checkbox" class="col s12 m2 left age" id="age-checkbox" />
               <span>Use Birthday to Calculate age?</span>
@@ -72,9 +76,25 @@
             </p>
           </div>
 
+          <%# 画像 %>
+          </br>
+          <div class="row image">
+            <%= f.label :image %>
+            <div class="input-field col s12">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>File</span>
+                  <%= f.file_field :image %>
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+              </div>
+            </div>
+          </div>
 
           <%# プロフィール %>
-          <div class="row">
+          <div class="row profile">
             <div class="input-field col s12">
               <%= f.text_area :profile, id:"profile", class:"materialize-textarea", "data-length":"140" %>
               <%= f.label :profile %>
@@ -82,12 +102,11 @@
           </div>
           
           <%# サブミットボタン %>
-          <div class="row center">
+          <div class="row submit-button center">
             <button class="btn waves-effect waves-light" type="submit" name="action">Submit
               <i class="material-icons right">send</i>
             </button>
           </div>
-
         </form>
       </div>
     <% end %>
