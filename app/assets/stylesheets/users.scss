@@ -7,7 +7,8 @@
   height:100vh;
   width:100vw;
   display:flex;
-  align-content: center;  
+  justify-content: center;
+  align-items: center;  
   &__box{
     background-color:rgb(255, 255, 255);
     width:400px;
@@ -34,18 +35,17 @@
 .container-show{
   height:100vh;
   width:100vw;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
   &__user-card{
     .cards{
-      display: flex;
-      justify-content: center;
-      align-content: center;        
       .card{
-        margin-top :100px;
         background-color: white;
         width:400px;
-        height:400px;
+        min-height:150px;
         text-align: left;
-        // overflow:auto;
         .card-content{
           border-top: 1px solid gray;
           background-color: white;

@@ -5,11 +5,11 @@
         <div class="card">
           <div class="card-image">
             <% if @user.image? %>
-              <%= @user.image %>
+              <%= image_tag @user.image.url, class:"user-image" %>
             <%else%>
               <%= image_tag "/assets/home_logo.JPG" %>
             <% end %>
-            <span class="card-title">Card Title</span>
+            <span class="card-title"><%= @user.nickname %> </span>
           </div>
           <div class="card-content">
             <p>User ID：<%= @user.id%></p>

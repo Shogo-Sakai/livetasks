@@ -8,6 +8,8 @@
           <p class="registration-title center">
             New User Registration
           </p>
+          <p class="message">
+          </p>
         <%# ニックネーム %>
           <div class="row nickname">
             <div class="input-field col s12">
@@ -36,9 +38,9 @@
           <%# 誕生日 %>
           <div class="row birthyear birthmonth birthday">
             <%= f.label :birthday %>
-            </br>            
+            </br>
             <div class="input-field col s12 m2">
-              <%= f.select(:birthyear, @year, {prompt:"Year"},{class:"browser-default", id:"birthyear"}) %>
+              <%= f.select(:birthyear, @year, {prompt:"Year"}, {class:"browser-default", id:"birthyear"}) %>
             </div>
             <div class="input-field col s12 m2">
               <%= f.select(:birthmonth, @month, {prompt:"Month"}, {id:"birthmonth", class:"browser-default"}) %>

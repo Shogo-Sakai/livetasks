@@ -4,21 +4,18 @@
 
 
 .container-home{
-  background: image-url("home_logo.JPG");
   height: 100vh;
   width: 100vw;
-  background-size: contain;
   .wrapper-home{
     display:flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     width: 100%;
-    background-color: rgba(5, 150, 82, 0.55);
     &__registration-box{
       width: 300px;
       height: 350px;
-      background-color: rgba(255, 255, 255, 0.803);
+      background-color: rgba(255, 255, 255, 0.927);
       border-radius: 30px;
       position:relative;
       &__home-image{

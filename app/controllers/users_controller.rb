@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def signup
+    
     y = 1950
     @year = []
     while y <= 2009 do
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
     if user.save
       redirect_to users_path
     else
-      render back_path
+      render new_registration_user_path
     end
   end
 
