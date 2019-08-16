@@ -5,6 +5,8 @@ class User < ApplicationRecord
   validates :email,    {uniqueness: true}
   validates :password, {presence:true}
   
+  enum gender:{ Male: 0, Female: 1 }
+
   has_many :staffs
   has_many :lives, through: :staffs
 end

@@ -31,7 +31,6 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       redirect_to users_path
-
     else
       render back_path
     end
@@ -52,6 +51,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
+    # debugger
     params.permit(:nickname, :email, :password, :profile, :birthyear, :birthmonth, :birthday, :age, :gender, :image)
   end
 

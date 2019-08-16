@@ -42,11 +42,11 @@
             <div class="input-field col s12 m2">
               <%= f.select(:birthday, @day, {prompt:"Day"}, {id:"birthday", class:"browser-default"}) %>
             </div>
-          </div>
+          <%# </div> %>
 
           <%# 年齢 %>
-          <div class="row">
-            <%= f.label :age %></br>
+          <%# <div class="row"> %>
+            <%= f.label :age %>
             <label class="age-label">
               <input type="checkbox" class="col s12 m2 left age" id="age-checkbox" />
               <span>Use Birthday to Calculate age?</span>
@@ -55,6 +55,23 @@
               <%= f.text_field :age , id:"age", class:"age"%>
             </div>
           </div>
+
+          <%# 性別 %>
+          <div class="row gender">
+            <%= f.label :gender %></br>
+            <% f.text_field :gender, id:"gender-input", class:"gender-input"%>
+              <p>
+              <label class="gender-male">
+                <input name="gender" type="radio" value="Male" id="gender-male" checked/>
+                <span>Male</span>
+              </label>
+              <label class="gender-female">
+                <input name="gender" type="radio" value="Female" id="gender-female"/>
+                <span>Female</span>
+              </label>
+            </p>
+          </div>
+
 
           <%# プロフィール %>
           <div class="row">

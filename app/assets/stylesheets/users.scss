@@ -65,17 +65,31 @@
   justify-content: center;
   align-content: center;
   align-items: center;
-  overflow: auto;
   &__box{
-    box-sizing: border-box;
-    width:60%;
-    max-height:550px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:70%;
+    // height:70%;
+    min-height:155px;
     padding:15px;
     border-radius: 30px;
     background-color: white;
     overflow: auto;
     .row{
       margin:0;
+    }
+    .age-label{
+      margin-left: 15px;
+      span{
+        margin:0;
+        padding:0;
+      }
+    }
+    .gender{
+      .gender-male{
+        margin-right:20px;
+      }
     }
   }
 }
