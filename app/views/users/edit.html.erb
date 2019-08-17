@@ -41,13 +41,13 @@
             <%= f.label :birthday %>
             </br>
             <div class="input-field col s12 m2">
-              <%= f.select(:birthyear, @year, {prompt:"Year"}, {id:"birthyear", class:"browser-default", name:"birthyear"}) %>
+              <%= f.select(:birthyear, @year, {prompt:"Year"}, {id:"birthyear", class:"browser-default", name:"user[birthyear]"}) %>
             </div>
             <div class="input-field col s12 m2">
-              <%= f.select(:birthmonth, @month, {prompt:"Month"}, {id:"birthmonth", class:"browser-default", name:"birthmonth"}) %>
+              <%= f.select(:birthmonth, @month, {prompt:"Month"}, {id:"birthmonth", class:"browser-default", name:"user[birthmonth]"}) %>
             </div>
             <div class="input-field col s12 m2">
-              <%= f.select(:birthday, @day, {prompt:"Day"}, {id:"birthday", class:"browser-default", name:"birthday"}) %>
+              <%= f.select(:birthday, @day, {prompt:"Day"}, {id:"birthday", class:"browser-default", name:"user[birthday]"}) %>
             </div>
           <%# </div> %>
 
@@ -69,11 +69,11 @@
             <% f.text_field :gender, id:"gender-input", class:"gender-input"%>
               <p>
               <label class="gender-male">
-                <input name="gender" type="radio" value="Male" id="gender-male" checked/>
+                <input name="user[gender]" type="radio" value="Male" id="gender-male"/>
                 <span>Male</span>
               </label>
               <label class="gender-female">
-                <input name="gender" type="radio" value="Female" id="gender-female"/>
+                <input name="user[gender]" type="radio" value="Female" id="gender-female"/>
                 <span>Female</span>
               </label>
             </p>

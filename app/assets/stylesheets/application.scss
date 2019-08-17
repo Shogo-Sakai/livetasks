@@ -37,11 +37,9 @@ html,body{
 html{
   background: image-url("home_logo.JPG");
   background-size: 100vh auto;
-  height: 100%;
-  width: 100%;
   .background-color{
-    height:100%;
-    width:100%;
+    height:100vh;
+    width:100vw;
     background-color: rgba(5, 150, 82, 0.55);
   }
 }
