@@ -1,7 +1,29 @@
   <%# <nav> <!-- navbar content here  --> </nav> %>
 <div class="header">
-  <div class="header__container">
-    
+  <div class="row header__container">
+    <div class="header__container__user-info col s3">
+      <div class="header__container__user-info__image">
+        <%if @user.image?%>
+          <%= image_tag @user.image_url, size:"100x100", class: "circle"%>
+        <% else %>
+          <%= image_tag "/assets/home_logo.JPG",size:"100x100", class:"circle" %>
+        <% end %>
+      </div>
+      <div class="header__container__user-info__profile">
+        <p><%= @user.nickname %></p>
+      </div>
+    </div>
+    <div class="header__container__task-info col s6">
+      <div class="header__container__task-info__box">
+        <ul class="header__container__task-info__box__tasks">
+          <li class="livetitle">Live A</li>
+          <li>Task 1</li>
+          <li>Task 2</li>
+        </ul>
+      </div>
+    </div>
+    <div class="header__container__function col s3">
+    </div>
   </div>
 </div>
 <div class="row contents">
