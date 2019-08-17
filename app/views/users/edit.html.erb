@@ -1,0 +1,117 @@
+<div class="container-input-user">
+  <div class="container-input-user__box">
+    <%= form_with model: @user, local: true, class:"inputs" do |f| %>
+      <div class="row contents">
+        <form class="col s12">
+
+          <%# タイトル %>
+          <p class="registration-title center">
+            Edit User Account
+          </p>
+          <%# メッセージ %>
+          <%= render 'layouts/error_messages', model: f.object %>
+
+        <%# ニックネーム %>
+          <div class="row nickname">
+            <div class="input-field col s12">
+              <%= f.text_field :nickname, id:"nickname", type:"text", class:"validate" %>
+              <%= f.label :nickname, "※Nickname", class:"red-text" %>
+            </div>
+          </div>
+
+          <%# メールアドレス %>
+          <div class="row email">
+            <div class="input-field col s12">
+              <%= f.label :email, "※E-mail", class:"red-text" %>
+              <%= f.text_field :email, id:"email", type:"email", class:"validate" %>
+              <span class="helper-text" data-error="There aren't any @ in your input." data-success="right"></span>
+            </div>
+          </div>
+
+          <%# パスワード %>
+          <div class="row password">
+            <div class="input-field col s12">
+              <%= f.text_field :password, id:"password", type:"password", class:"validate" %>
+              <%= f.label :password, "※Password", class:"red-text" %>
+            </div>
+          </div>
+
+          <%# 誕生日 %>
+          <div class="row birthyear birthmonth birthday">
+            <%= f.label :birthday %>
+            </br>
+            <div class="input-field col s12 m2">
+              <%= f.select(:birthyear, @year, {prompt:"Year"}, {id:"birthyear", class:"browser-default", name:"birthyear"}) %>
+            </div>
+            <div class="input-field col s12 m2">
+              <%= f.select(:birthmonth, @month, {prompt:"Month"}, {id:"birthmonth", class:"browser-default", name:"birthmonth"}) %>
+            </div>
+            <div class="input-field col s12 m2">
+              <%= f.select(:birthday, @day, {prompt:"Day"}, {id:"birthday", class:"browser-default", name:"birthday"}) %>
+            </div>
+          <%# </div> %>
+
+          <%# 年齢 %>
+          <%# <div class="row"> %>
+            <%= f.label :age , class:"age"%>
+            <label class="age-label">
+              <input type="checkbox" class="col s12 m2 left age" id="age-checkbox" />
+              <span>Use Birthday to Calculate age?</span>
+            </label>
+            <div class="input-field col s12 m2 center">
+              <%= f.text_field :age , id:"age", class:"age"%>
+            </div>
+          </div>
+
+          <%# 性別 %>
+          <div class="row gender">
+            <%= f.label :gender %></br>
+            <% f.text_field :gender, id:"gender-input", class:"gender-input"%>
+              <p>
+              <label class="gender-male">
+                <input name="gender" type="radio" value="Male" id="gender-male" checked/>
+                <span>Male</span>
+              </label>
+              <label class="gender-female">
+                <input name="gender" type="radio" value="Female" id="gender-female"/>
+                <span>Female</span>
+              </label>
+            </p>
+          </div>
+
+          <%# 画像 %>
+          </br>
+          <div class="row image">
+            <%= f.label :image %>
+            <div class="input-field col s12">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>File</span>
+                  <%= f.file_field :image %>
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <%# プロフィール %>
+          <div class="row profile">
+            <div class="input-field col s12">
+              <%= f.text_area :profile, id:"profile", class:"materialize-textarea", "data-length":"140" %>
+              <%= f.label :profile %>
+            </div>
+          </div>
+          
+          <%# サブミットボタン %>
+          <div class="row submit-button center">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
+      </div>
+    <% end %>
+  </div>
+</div>

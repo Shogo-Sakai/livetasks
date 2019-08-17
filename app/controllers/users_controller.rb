@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_birthdate, only: [:signup, :create]
+  before_action :set_birthdate, only: [:signup, :create, :edit, :update]
   def index
     @users = User.all
   end
@@ -10,11 +10,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    # debugger
     if @user.save
-      flash[:notice] = "New User Registered!!"
       redirect_to users_path
     else
-      # debugger
       render :signup
     end
   end
@@ -24,9 +23,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "Edit Success!!"
+      redirect_to user_path(params[:id])
+    else
+      render "users/edit"
+    end
   end
 
   def destroy
@@ -35,7 +42,7 @@ class UsersController < ApplicationController
   private
   def user_params
     # debugger
-    params.permit(:nickname, :email, :password, :profile, :birthyear, :birthmonth, :birthday, :age, :gender, :image)
+    params.require(:user).permit(:nickname, :email, :password, :profile, :birthyear, :birthmonth, :birthday, :age, :gender, :image)
   end
 
     # 誕生日の表示メソッド
