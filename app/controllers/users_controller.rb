@@ -11,7 +11,18 @@ class UsersController < ApplicationController
   end
 
   def login_form
+    @user = User.new
+  end
 
+  def login
+    @user = User.find_by(user_session_params)
+    if @user
+      flash[:notice]="ログインしました"
+      redirect_to user_lives_path(user_id:@user.id)
+    else
+      # debugger
+      render :login_form
+    end
   end
 
   def create
@@ -32,7 +43,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      @user.save
       flash[:notice] = "Edit Success!!"
+      # debugger
       redirect_to user_path(params[:id])
     else
       render "users/edit"
@@ -43,6 +56,10 @@ class UsersController < ApplicationController
     def user_params
       # debugger
       params.require(:user).permit(:nickname, :email, :password, :profile, :birthyear, :birthmonth, :birthday, :age, :gender, :image)
+    end
+
+    def user_session_params
+      params.require(:user).permit(:email, :password_digest)
     end
 
     def set_user

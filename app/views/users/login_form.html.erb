@@ -1,0 +1,41 @@
+<div class="container-input-user">
+  <div class="container-input-user__box login-form">
+    <%= form_with model: @user, url:"/login", local: true, class:"inputs login-form" do |f| %>
+      <div class="row contents">
+        <form class="col s12">
+
+          <%# タイトル %>
+          <p class="registration-title center">
+            Login
+          </p>
+          <%# メッセージ %>
+          <%# <%= render 'layouts/error_messages', model: f.object %> %>
+
+          <%# メールアドレス %>
+          <div class="row email">
+            <div class="input-field col s12">
+              <%= f.label :email, "※E-mail", class:"red-text" %>
+              <%= f.text_field :email, id:"email", type:"email", class:"validate" %>
+              <span class="helper-text" data-error="There aren't any @ in your input." data-success="right"></span>
+            </div>
+          </div>
+
+          <%# パスワード %>
+          <div class="row password">
+            <div class="input-field col s12">
+              <%= f.text_field :password, id:"password", type:"password", class:"validate" %>
+              <%= f.label :password, "※Password", class:"red-text" %>
+            </div>
+          </div>
+
+          <%# サブミットボタン %>
+          <div class="row submit-button center">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
+      </div>
+    <% end %>
+  </div>
+</div>
