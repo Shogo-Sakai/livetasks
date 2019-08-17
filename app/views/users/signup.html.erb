@@ -13,16 +13,11 @@
             「※」mark is necessary to register.
           </p>
           <%= render 'layouts/error_messages', model: f.object %>
-          <% @user.errors.full_messages.each do |message| %>
-            <div class= " form-error ">
-              <%= message %>
-            </div>
-          <% end %>
 
         <%# ニックネーム %>
           <div class="row nickname">
             <div class="input-field col s12">
-              <%= f.text_field :nickname, id:"nickname", type:"text", class:"validate"%>
+              <%= f.text_field :nickname, id:"nickname", type:"text", class:"validate" %>
               <%= f.label :nickname, "※Nickname", class:"red-text" %>
             </div>
           </div>

@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   end
 
   def signup
-    # 誕生日の表示メソッド
     @user = User.new
   end
 
@@ -16,7 +15,7 @@ class UsersController < ApplicationController
       redirect_to users_path
     else
       # debugger
-      render new_registration_user_path
+      render :signup
     end
   end
 
@@ -39,6 +38,7 @@ class UsersController < ApplicationController
     params.permit(:nickname, :email, :password, :profile, :birthyear, :birthmonth, :birthday, :age, :gender, :image)
   end
 
+    # 誕生日の表示メソッド
   def set_birthdate
     y = 1950
     @year = []
