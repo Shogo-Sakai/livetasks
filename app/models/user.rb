@@ -3,10 +3,11 @@ class User < ApplicationRecord
   has_secure_password
 
   # バリデーション
-  validates :nickname, {presence:true}
-  validates :email,    {presence:true}
-  validates :email,    {uniqueness: true}
-  validates :password, {presence:true}
+  validates :nickname, presence: true
+  validates :email,    presence: true
+  validates :email,    uniqueness: true
+  validates :password, presence: true
+  validates :profile,  length: {maximum: 140}
   
   # enumの設定
   enum gender:{ Male: 0, Female: 1 }

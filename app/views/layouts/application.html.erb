@@ -11,7 +11,14 @@
 
   <div class="background-color">
     <body>
-        <%= yield %>
+      <%# フラッシュ %>
+      <% if flash[:notice] %>
+        <div class="flash">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      
+      <%= yield %>
     </body>
   </div>
 </html>

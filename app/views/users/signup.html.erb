@@ -8,13 +8,22 @@
           <p class="registration-title center">
             New User Registration
           </p>
-          <p class="message">
+          <%# メッセージ %>
+          <p class="message center">
+            「※」mark is necessary to register.
           </p>
+          <%= render 'layouts/error_messages', model: f.object %>
+          <% @user.errors.full_messages.each do |message| %>
+            <div class= " form-error ">
+              <%= message %>
+            </div>
+          <% end %>
+
         <%# ニックネーム %>
           <div class="row nickname">
             <div class="input-field col s12">
-              <%= f.text_field :nickname, id:"nickname", type:"text", class:"validate" %>
-              <%= f.label :nickname %>
+              <%= f.text_field :nickname, id:"nickname", type:"text", class:"validate"%>
+              <%= f.label :nickname, "※Nickname", class:"red-text" %>
             </div>
           </div>
 
@@ -22,8 +31,8 @@
           <div class="row email">
             <div class="input-field col s12">
               <%= f.text_field :email, id:"email", type:"email", class:"validate" %>
-              <%= f.label :email %>
-              <span class="helper-text" data-error="There aren't any @ in your input." data-success="right">Helper text</span>
+              <%= f.label :email, "※E-mail", class:"red-text" %>
+              <span class="helper-text" data-error="There aren't any @ in your input." data-success="right"></span>
             </div>
           </div>
 
@@ -31,7 +40,7 @@
           <div class="row password">
             <div class="input-field col s12">
               <%= f.text_field :password, id:"password", type:"password", class:"validate" %>
-              <%= f.label :password %>
+              <%= f.label :password, "※Password", class:"red-text" %>
             </div>
           </div>
 
@@ -40,13 +49,13 @@
             <%= f.label :birthday %>
             </br>
             <div class="input-field col s12 m2">
-              <%= f.select(:birthyear, @year, {prompt:"Year"}, {class:"browser-default", id:"birthyear"}) %>
+              <%= f.select(:birthyear, @year, {prompt:"Year"}, {id:"birthyear", class:"browser-default", name:"birthyear"}) %>
             </div>
             <div class="input-field col s12 m2">
-              <%= f.select(:birthmonth, @month, {prompt:"Month"}, {id:"birthmonth", class:"browser-default"}) %>
+              <%= f.select(:birthmonth, @month, {prompt:"Month"}, {id:"birthmonth", class:"browser-default", name:"birthmonth"}) %>
             </div>
             <div class="input-field col s12 m2">
-              <%= f.select(:birthday, @day, {prompt:"Day"}, {id:"birthday", class:"browser-default"}) %>
+              <%= f.select(:birthday, @day, {prompt:"Day"}, {id:"birthday", class:"browser-default", name:"birthday"}) %>
             </div>
           <%# </div> %>
 
