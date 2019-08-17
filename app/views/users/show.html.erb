@@ -1,29 +1,32 @@
-<div class=" container-show ">
-  <div class=" container-show__user-card ">
-    <div>
-      <div class="col s12 m7 center cards">
-        <div class="card">
-          <div class="card-image">
-            <% if @user.image? %>
-              <%= image_tag @user.image.url, class:"user-image" %>
-            <%else%>
-              <%= image_tag "/assets/home_logo.JPG" %>
-            <% end %>
-            <span class="card-title"><%= @user.nickname %> </span>
-          </div>
-          <div class="card-content">
-            <p>User ID：<%= @user.id%></p>
-            <p>Name：<%= @user.nickname%></p>
-            <p>E-mail Adress：<%= @user.email%></p>
-            <p>Birthday：<%= @user.birthyear%>年<%= @user.birthmonth%>月<%= @user.birthday%>日</p>
-            <p>Age：<%= @user.age%></p>
-            <p>Gender：<%= @user.gender%></p>
-            <p>Profile</p>
-            <p><%= @user.profile %></p>
-          </div>
-          <div class="card-action">
-            <a href=<%= edit_user_path %>>Edit User Account</a>
-            <a href="#">delete?</a>
+<div class="row">
+  <%= render 'lives/sidenav', user: @user, class:"col s1" %>
+  <div class=" container-show col s11">
+    <div class=" container-show__user-card ">
+      <div>
+        <div class="col s12 m7 center cards">
+          <div class="card">
+            <div class="card-image">
+              <% if @user.image? %>
+                <%= image_tag @user.image.url, class:"user-image" %>
+              <%else%>
+                <%= image_tag "/assets/home_logo.JPG" %>
+              <% end %>
+              <span class="card-title"><%= @user.nickname %> </span>
+            </div>
+            <div class="card-content">
+              <p>User ID：<%= @user.id%></p>
+              <p>Name：<%= @user.nickname%></p>
+              <p>E-mail Adress：<%= @user.email%></p>
+              <p>Birthday：<%= @user.birthyear%>年<%= @user.birthmonth%>月<%= @user.birthday%>日</p>
+              <p>Age：<%= @user.age%></p>
+              <p>Gender：<%= @user.gender%></p>
+              <p>Profile</p>
+              <p><%= @user.profile %></p>
+            </div>
+            <div class="card-action">
+              <a href=<%= edit_user_path %>>Edit User Account</a>
+              <a href="#">delete?</a>
+            </div>
           </div>
         </div>
       </div>

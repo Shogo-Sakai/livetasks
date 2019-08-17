@@ -12,3 +12,8 @@
     };
     M.Modal.init(elems, options);
   });
+
+
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });

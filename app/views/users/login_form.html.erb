@@ -8,14 +8,19 @@
           <p class="registration-title center">
             Login
           </p>
+
           <%# メッセージ %>
-          <%# <%= render 'layouts/error_messages', model: f.object %> %>
+          <% if @error_message %>
+            <div class="form-error red-text center">
+              <%= @error_message %>
+            </div>
+            <% end %>
 
           <%# メールアドレス %>
           <div class="row email">
             <div class="input-field col s12">
               <%= f.label :email, "※E-mail", class:"red-text" %>
-              <%= f.text_field :email, id:"email", type:"email", class:"validate" %>
+              <%= f.text_field :email, id:"email", type:"email", class:"validate", value: @email %>
               <span class="helper-text" data-error="There aren't any @ in your input." data-success="right"></span>
             </div>
           </div>
@@ -23,7 +28,7 @@
           <%# パスワード %>
           <div class="row password">
             <div class="input-field col s12">
-              <%= f.text_field :password, id:"password", type:"password", class:"validate" %>
+              <%= f.text_field :password, id:"password", type:"password", class:"validate", value:@password %>
               <%= f.label :password, "※Password", class:"red-text" %>
             </div>
           </div>

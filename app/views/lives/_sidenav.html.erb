@@ -1,0 +1,31 @@
+<%# サイドバー %>
+  <ul id="slide-out" class="sidenav">
+    <li><div class="user-view">
+      <div class="background">
+        <%=image_tag "/assets/home_logo.JPG", size:"200x200" %>
+      </div>
+      <a href="#user">
+      <% if @user.image? %>
+        <%= image_tag @user.image_url, class:"circle" %>
+      <% else %>
+        <%= image_tag "/assets/home_logo.JPG", class:"circle" %>
+      <% end %>
+      </a>
+      <a href="#name"><span class="black-text name"><%= @user.nickname %> </span></a>
+      <%# <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a> %>
+    </div></li>
+    <li><a href= <%= user_path(session[:user_id]) %>><i class="material-icons">account_circle</i>Account Information</a></li>
+    <%# <li><a class="subheader"> Lives </a></li> %>
+    <li><a href= <%= user_lives_path(session[:user_id]) %> > Home </a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="#!" class="waves-effect">Live A</a></li>
+    <li><a href ="#!" class="waves-effect">Live B</a></li>
+  </ul>
+  <div class="sidenavbar waves-effect sidenav-trigger" data-target="slide-out">
+    <div class="rotate">
+      <a href="#" data-target="slide-out" class="sidenav-trigger white-text center-align">
+        <%# <i class="material-icons">menu</i> %>
+        menu
+      </a>
+    </div>
+  </div>

@@ -15,13 +15,18 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.find_by(user_session_params)
-    if @user
-      flash[:notice]="ログインしました"
+    # debugger
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      flash[:notice]="Login Success!!"
       redirect_to user_lives_path(user_id:@user.id)
     else
       # debugger
-      render :login_form
+      @error_message = "E-mail or Password is not right."
+      @email = params[:email]
+      @password = params[:password]
+      render("/users/login_form")
     end
   end
 
