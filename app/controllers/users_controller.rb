@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_birthdate, only: [:signup, :create, :edit, :update]
   before_action :set_user, only: [:show, :edit, :update]
-  before_action :set_session_user, only: [:index, :show, :edit,]
+  before_action :set_current_user, only: [:index, :show, :edit,]
 
   def index
     @users = User.all
@@ -33,13 +33,17 @@ class UsersController < ApplicationController
   end
 
   def logout
+    session[:user_id] = nil
+    flash[:notice] = "Logout Success."
+    redirect_to root_path
   end
 
   def create
     @user = User.new(user_params)
     # debugger
     if @user.save
-      redirect_to users_path
+      session[:user_id] = @user.id
+      redirect_to user_lives_path(user_id: @user.id)
     else
       render :signup
     end
@@ -76,8 +80,8 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    def set_session_user
-      @session_user = User.find(session[:user_id])
+    def set_current_user
+      @current_user = User.find(session[:user_id])
     end
 
       # 誕生日の表示メソッド

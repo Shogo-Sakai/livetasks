@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post "/users/signup", to:"users#create"
   get "login", to:"users#login_form", as: "login_user"
   post "login", to:"users#login"
+  post "logout", to:"users#logout"
   resources :users do
     resources :lives
   end
