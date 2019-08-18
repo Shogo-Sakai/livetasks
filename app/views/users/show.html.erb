@@ -22,10 +22,12 @@
               <p>Profile</p>
               <p><%= @user.profile %></p>
             </div>
-            <div class="card-action">
-              <a href=<%= edit_user_path %>>Edit User Account</a>
-              <a href="#">delete?</a>
-            </div>
+            <% if @user.id == @current_user.id %>
+              <div class="card-action">
+                <a href=<%= edit_user_path %>>Edit User Account</a>
+                <a href="#">delete?</a>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

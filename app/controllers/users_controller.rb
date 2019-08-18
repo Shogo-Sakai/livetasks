@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :set_birthdate, only: [:signup, :create, :edit, :update]
   before_action :set_user, only: [:show, :edit, :update]
   before_action :set_current_user, only: [:index, :show, :edit,]
+  before_action :authenticate_user, only: [:show, :edit, :update]
+  before_action :forbid_login_user, only: [:login_form, :login, :signup, :create]
+  before_action :ensure_correct_user, only: [:edit, :update]
 
   def index
     @users = User.all
@@ -76,6 +79,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:email, :password_digest)
     end
 
+    # ユーザーログイン関係
     def set_user
       @user = User.find(params[:id])
     end
@@ -84,7 +88,28 @@ class UsersController < ApplicationController
       @current_user = User.find(session[:user_id])
     end
 
-      # 誕生日の表示メソッド
+    def authenticate_user
+      if @current_user == nil
+        flash[:notice] = "Need to Login"
+        redirect_to root_path
+      end
+    end
+
+    def forbid_login_user
+      if @current_user
+        flash[:notice] = "You are already logined."
+        redirect_to user_lives_path(user_id: @current_user)
+      end
+    end
+
+    def ensure_correct_user
+      if @current_user.id != params[:id].to_i
+        flash[:notice] = "You don't have access authorizations."
+        redirect_to user_lives_path(user_id: @current_user)
+      end
+    end
+
+        # 誕生日の表示メソッド
     def set_birthdate
       y = 1950
       @year = []
@@ -106,7 +131,6 @@ class UsersController < ApplicationController
         @day << [d,d]
         d += 1
       end
-
     end
 
 end
