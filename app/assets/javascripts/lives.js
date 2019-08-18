@@ -7,3 +7,12 @@ $(document).ready(function(){
 $(document).ready(function(){
   $('.tabs').tabs();
 });
+
+// 日付選択
+$(document).ready(function(){
+  $('.datepicker').datepicker({
+    autoClose: true,
+    format: 'yyyy/mm/dd',
+    showMonthAfterYear: true
+  });
+});
