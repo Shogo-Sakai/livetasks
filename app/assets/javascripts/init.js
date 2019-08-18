@@ -12,5 +12,3 @@
     };
     M.Modal.init(elems, options);
   });
-
-
