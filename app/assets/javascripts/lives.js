@@ -16,3 +16,5 @@ $(document).ready(function(){
     showMonthAfterYear: true
   });
 });
+
+// 検索非同期通信

@@ -11,7 +11,7 @@ class LivesController < ApplicationController
     @live = Live.new(live_params)
     if @live.save
       flash[:notice] = "Created new Live Project!"
-      redirect_to user_life_path(user_id: session[:user_id],id:params[:id])
+      redirect_to user_life_path(user_id: session[:user_id],id: @live.id)
     else
       @error_message = "Has some error. Please check again."
       render :new
@@ -28,11 +28,12 @@ class LivesController < ApplicationController
   end
 
   def show
+    @live = Live.find(params[:id])
   end
 
   private
   def live_params
-    params.require(:live).permit(:name, :date, :concept, :target, :budget,:image).merge(user_id: session[:user_id])
+    params.require(:live).permit(:name, :date, :concept, :target, :budget,:image, { :user_ids => [] })
   end
 
   # ユーザー関係

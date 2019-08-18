@@ -1,9 +1,9 @@
 <%= render "lives/header" %>
 <div class="row contents">
   <%= render 'lives/sidenav', class:"col" %>
-  <div class="main-contents col">
-    <div class="main-contents__input">
-      <div class="main-contents__input__box">
+  <div class="main-contents-new col">
+    <div class="main-contents-new__input">
+      <div class="main-contents-new__input__box">
       <%= form_with model:[@user, @live], url: user_lives_path, local: true do |f| %>
         <form>
 
@@ -17,10 +17,10 @@
           </p>
           <%= render 'layouts/error_messages', model: f.object %>
 
-          <%# ニックネーム %>
+          <%# ライブ名 %>
           <div class="row name">
             <div class="input-field col s12">
-              <%= f.text_field :nickname, id:"nickname", type:"text", class:"validate" %>
+              <%= f.text_field :name, id:"name", type:"text", class:"validate" %>
               <%= f.label :name, "※Project name", class:"red-text" %>
             </div>
           </div>
@@ -56,6 +56,8 @@
               <%= f.label :budget, "Budget" %>
             </div>
           </div>
+
+          <%# スタッフ %>
 
           <%# 画像 %>
           <div class="row image">
