@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_birthdate, only: [:signup, :create, :edit, :update]
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_session_user, only: [:index, :show, :edit,]
 
   def index
     @users = User.all
+    @user = User.find(session[:user_id])
   end
 
   def signup
@@ -28,6 +30,9 @@ class UsersController < ApplicationController
       @password = params[:password]
       render("/users/login_form")
     end
+  end
+
+  def logout
   end
 
   def create
@@ -70,6 +75,11 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
+
+    def set_session_user
+      @session_user = User.find(session[:user_id])
+    end
+
       # 誕生日の表示メソッド
     def set_birthdate
       y = 1950

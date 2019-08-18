@@ -4,11 +4,15 @@
 
 // index
 .container-user{
+  position:absolute;
+  top:0;
+  left:0;
   height:100vh;
   width:100vw;
   display:flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
+  overflow: auto;
   &__box{
     background-color:rgb(255, 255, 255);
     width:400px;
@@ -33,7 +37,9 @@
 // show
 
 .container-show{
-  float:right;
+  position:absolute;
+  top:0;
+  left:0;
   height:100vh;
   width:100vw;
   display:flex;

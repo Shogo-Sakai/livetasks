@@ -1,7 +1,7 @@
 // modal の初期化
   
  // 注意点１ イベントの着火をDOMContentLoaded => turbolinks:loadに変える
- document.addEventListener('turbolinks:load', function() {
+ document.addEventListener('DOMContentLoaded', function() {
   // 注意点2 countを0にセットする
     M.Modal._count = 0;
     var elems = document.querySelectorAll('.modal');
@@ -14,6 +14,3 @@
   });
 
 
-  $(document).ready(function(){
-    $('.sidenav').sidenav();
-  });

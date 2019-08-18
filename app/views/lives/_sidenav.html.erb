@@ -5,13 +5,13 @@
         <%=image_tag "/assets/home_logo.JPG", size:"200x200" %>
       </div>
       <a href="#user">
-      <% if @user.image? %>
-        <%= image_tag @user.image_url, class:"circle" %>
+      <% if @session_user.image? %>
+        <%= image_tag @session_user.image_url, class:"circle" %>
       <% else %>
         <%= image_tag "/assets/home_logo.JPG", class:"circle" %>
       <% end %>
       </a>
-      <a href="#name"><span class="black-text name"><%= @user.nickname %> </span></a>
+      <a href="#name"><span class="black-text name"><%= @session_user.nickname %> </span></a>
       <%# <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a> %>
     </div></li>
     <li><a href= <%= user_path(session[:user_id]) %>><i class="material-icons">account_circle</i>Account Information</a></li>

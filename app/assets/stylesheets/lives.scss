@@ -20,6 +20,7 @@
   position: fixed;
   top:0;
   left:0;
+  float:left;
   .rotate{
     width:100%;
     height:100%;
@@ -37,9 +38,9 @@
   width: 100vw;
   height:200px;
   background-color: green;
-  position:fixed;
+  position:absolute;
   top:0;
-  float:left;
+  left:0;
   &__container{
     display:flex;
     justify-content: center;
@@ -79,7 +80,22 @@
       }
     }
     &__function{
-      
+      width:100%;
+      height:200px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      &__menu{
+        &__list{
+          li{
+            a{
+              text-decoration: none;
+              color:white;
+              font-size: 2rem;    
+            }
+          }
+        }
+      }
     }
   }
 }
