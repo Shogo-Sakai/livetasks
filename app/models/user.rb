@@ -12,7 +12,7 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   # アソシエーション
+  has_many :lives
   has_many :staffs
-  has_many :lives, through: :staffs
-
+  has_many :staff_lives, through: :staffs, source: :live
 end

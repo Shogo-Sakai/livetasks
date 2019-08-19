@@ -18,8 +18,9 @@
     <%# <li><a class="subheader"> Lives </a></li> %>
     <li><a href= <%= user_lives_path(session[:user_id]) %> > Home </a></li>
     <li><div class="divider"></div></li>
-    <li><a href="#!" class="waves-effect">Live A</a></li>
-    <li><a href ="#!" class="waves-effect">Live B</a></li>
+    <% @current_user.staff_lives.each do |live| %>
+      <li><a href="<%= user_life_path(user_id: @current_user.id, id: live.id) %>" class="waves-effect"><%= live.name %></a></li>
+    <% end %>
   </ul>
   <div class="sidenavbar waves-effect sidenav-trigger" data-target="slide-out">
     <div class="rotate">

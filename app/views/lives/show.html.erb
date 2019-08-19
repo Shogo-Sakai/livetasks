@@ -1,0 +1,28 @@
+<%= render "lives/header" %>
+<div class="row contents">
+  <%= render 'lives/sidenav', class:"col s1" %>
+  <div class="main-contents ">
+    <div class="row">
+      <div class="col s12">
+        <ul class="tabs">
+          <li class="tab col s3"><a href="#concept">concept</a></li>
+          <li class="tab col s3"><a href="#tasks">tasks</a></li>
+          <li class="tab col s3"><a href="#staff">staff</a></li>
+          <li class="tab col s3"><a href="#calender">calender</a></li>
+        </ul>
+      </div>
+      <div id="concept" class="col s12">
+        <%= render "lives/concept" %>
+      </div>
+      <div id="tasks" class="col s12">
+        <%= render "lives/tasks" %>
+      </div>
+      <div id="staff" class="col s12">
+        <%= render "lives/staff" %>
+      </div>
+      <div id="calender" class="col s12">
+        <%= render "lives/calender" %>
+      </div>
+    </div>
+  </div> 
+</div>
