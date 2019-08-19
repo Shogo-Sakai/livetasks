@@ -1,4 +1,4 @@
 class Staff < ApplicationRecord
   belongs_to :user
-  belongs_to :life
+  belongs_to :live
 end

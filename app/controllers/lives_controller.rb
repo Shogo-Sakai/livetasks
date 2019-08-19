@@ -10,6 +10,7 @@ class LivesController < ApplicationController
 
   def create
     @live = Live.new(live_params)
+    # debugger
     if @live.save
       flash[:notice] = "Created new Live Project!"
       redirect_to user_life_path(user_id: session[:user_id],id: @live.id)

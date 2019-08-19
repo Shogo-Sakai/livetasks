@@ -3,10 +3,6 @@ class User < ApplicationRecord
   has_secure_password
 
   # バリデーション
-  validates :nickname, presence: true
-  validates :email,    presence: true
-  validates :email,    uniqueness: true
-  validates :password, presence: true
   validates :profile,  length: {maximum: 140}
   
   # enumの設定
@@ -18,4 +14,5 @@ class User < ApplicationRecord
   # アソシエーション
   has_many :staffs
   has_many :lives, through: :staffs
+
 end

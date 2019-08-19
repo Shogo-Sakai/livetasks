@@ -23,7 +23,7 @@ $(function(){
   function appendLiveStaff(userName, userId){
     var html =`
               <div class='live-staff' id='${userId}'>
-                <input name='life[user_ids][]' type='hidden' value='${userId}'>
+                <input name='live[user_ids][]' type='hidden' value='${userId}'>
                 <p class='live-staff__name'>${userName}</p>
                 <div class='user-search-remove btn'>remove</div>
               </div>
