@@ -17,4 +17,3 @@ $(document).ready(function(){
   });
 });
 
-// 検索非同期通信

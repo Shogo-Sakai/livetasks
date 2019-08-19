@@ -133,6 +133,7 @@
   align-items: center;
   &__input{
     width: 70%;
+    max-width: 700px;
     height: 80%;
     border-radius: 30px;
     background-color: white;
@@ -150,3 +151,23 @@
     }
   }  
 }
+#search-result{
+  max-height:100px;
+  overflow: auto;
+  #user-search-result{
+    padding:3px 15px;
+    .live-staff{
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom:1px solid rgba(128, 128, 128, 0.666);
+      &__name{
+        padding:5px;
+        margin:10px;
+      }
+    }      
+  }
+}
+.box-border{
+  border:1px solid rgba(128, 128, 128, 0.6);
+};

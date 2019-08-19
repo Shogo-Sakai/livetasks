@@ -41,6 +41,22 @@
             </div>
           </div>
 
+          <%# 画像 %>
+          <div class="row image">
+            <%= f.label :image ,value:"Project image, logo" %>
+            <div class="input-field col s12">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>File</span>
+                  <%= f.file_field :image %>
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+              </div>
+            </div>
+          </div>
+
           <%# ターゲット %>
           <div class="row concept">
             <div class="input-field col s12">
@@ -58,22 +74,17 @@
           </div>
 
           <%# スタッフ %>
-
-          <%# 画像 %>
-          <div class="row image">
-            <%= f.label :image %>
-            <div class="input-field col s12">
-              <div class="file-field input-field">
-                <div class="btn">
-                  <span>File</span>
-                  <%= f.file_field :image %>
-                </div>
-                <div class="file-path-wrapper">
-                  <input class="file-path validate" type="text">
-                </div>
-              </div>
+          <div class="row search">
+            <div class="input-field search-field col s12">
+              <textarea id="user-search-field" class=" search-field__input materialize-textarea" placeholder="Input who to add for staff." name="keyword"></textarea>
+              <label for="staff">Add Live Staffs</label>
             </div>
           </div>
+          <div class="row" id="search-result">
+            <div id="user-search-result">
+            </div>
+          </div>
+
 
           <%# サブミットボタン %>
           <div class="row submit-button center">
