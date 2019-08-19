@@ -4,7 +4,7 @@
   <div class="main-contents-new col">
     <div class="main-contents-new__input">
       <div class="main-contents-new__input__box">
-      <%= form_with model:[@user, @live], url: user_lives_path, local: true do |f| %>
+      <%= form_with model: @live, url: user_lives_path, local: true do |f| %>
         <form>
 
           <%# タイトル %>
@@ -73,7 +73,7 @@
             </div>
           </div>
 
-          <%# スタッフ %>
+          <%# スタッフ検索 %>
           <div class="row search">
             <div class="input-field search-field col s12">
               <textarea id="user-search-field" class=" search-field__input materialize-textarea" placeholder="Input who to add for staff." name="keyword"></textarea>
@@ -84,7 +84,24 @@
             <div id="user-search-result">
             </div>
           </div>
-
+          <%# スタッフ %>
+          <div class="row staff">
+            <div class="col s12" id ="live-staffs">
+              <%= f.label :staff, "Staffs" %>
+              <div class='live-staff' id= <%= @current_user.id %>>
+                <input name='life[user_ids][]' type='hidden' value='<%= @current_user.id %>'>
+                <p class='live-staff__name'><%= @current_user.nickname %></p>
+              </div>
+              <% @live.users.where.not(id: @current_user.id).each do |user| %>
+                <div class='live-staff' id='<%= user.id %>'>
+                  <input name='life[user_ids][]' type='hidden' value='<%= user.id %>'>
+                  <p class='live-staff__name'><%= user.nickname %></p>
+                  <div class='user-search-remove btn'>remove</div>
+                </div>
+              <% end %>
+              <div id="live-new-staffs"></div>
+            </div>
+          </div>
 
           <%# サブミットボタン %>
           <div class="row submit-button center">

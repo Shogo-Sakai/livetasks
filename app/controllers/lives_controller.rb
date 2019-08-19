@@ -5,6 +5,7 @@ class LivesController < ApplicationController
 
   def new
     @live = Live.new
+    @live.users << @current_user
   end
 
   def create

@@ -156,18 +156,23 @@
   overflow: auto;
   #user-search-result{
     padding:3px 15px;
-    .live-staff{
-      display:flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom:1px solid rgba(128, 128, 128, 0.666);
-      &__name{
-        padding:5px;
-        margin:10px;
-      }
-    }      
   }
 }
+
+.live-staff{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom:1px solid rgba(128, 128, 128, 0.666);
+  &__name{
+    padding:5px;
+    margin:10px;
+  }
+}
+
+
+// 検索結果のボーダー
 .box-border{
+  border-radius: 10px;
   border:1px solid rgba(128, 128, 128, 0.6);
 };
