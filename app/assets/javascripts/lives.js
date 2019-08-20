@@ -1,19 +1,14 @@
-// サイドナビバー
 $(document).ready(function(){
+  // サイドナビバー
   $('.sidenav').sidenav();
-});
 
-// タブ
-$(document).ready(function(){
+  // タブ
   $('.tabs').tabs();
-});
 
-// 日付選択
-$(document).ready(function(){
+  // 日付選択
   $('.datepicker').datepicker({
     autoClose: true,
     format: 'yyyy/mm/dd',
     showMonthAfterYear: true
   });
 });
-

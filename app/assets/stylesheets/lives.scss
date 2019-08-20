@@ -38,7 +38,7 @@
   width: 100vw;
   height:200px;
   background-color: green;
-  position:absolute;
+  position:fixed;
   top:0;
   left:0;
   &__container{
@@ -87,7 +87,7 @@
       align-items: center;
       &__menu{
         &__list{
-          li{
+          li{display: block;
             a{
               text-decoration: none;
               color:white;
@@ -106,11 +106,11 @@
   .main-contents{
     width: calc(100% - 30px);
     height: calc(100vh - 200px);
-    position: absolute;
+    position: fixed;
     top: 200px;
     left: 30px;
     padding:0;
-    overflow: auto;
+    // overflow: auto;
     .row{
       .col{
         padding:0;
@@ -176,3 +176,64 @@
   border-radius: 10px;
   border:1px solid rgba(128, 128, 128, 0.6);
 };
+
+
+// show
+.tabs{
+  position:fixed;
+  top:0;
+  left:0;
+}
+
+.tab-contents{
+  width:100%;
+  height:100%;
+}
+
+.main-contents-container{
+  width: calc(100% - 30px);
+  height: calc(100vh - 200px - 48px);
+  overflow:auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__box{
+    width:80%;
+    height:70%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    padding:15px;
+    &__wrapper{
+      width:100%;
+      height: 100%;
+      overflow: auto;
+      .content-title{
+        font-size: 2rem;
+      }
+      &__image{
+
+      }
+      &__title{
+
+      }
+      &__date{
+
+      }
+      &__concept{
+
+      }
+      &__target{
+
+      }
+      &__budget{
+
+      }
+      &__edit{
+
+      }
+    }
+  }
+}

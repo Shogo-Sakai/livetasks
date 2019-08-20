@@ -1,7 +1,36 @@
-<div class="concept-container">
-  <div class="concept-container__box">
-    <div class="concept-container__box__logo">
-      <%# <%= if @live =  %> %>
+<div class="main-contents-container">
+  <div class="main-contents-container__box">
+    <div class="main-contents-container__box__wrapper center">
+      <div class="main-contents-container__box__wrapper__image">
+        <% if @live.image? %>
+          <%= image_tag @live.image_url, class:"circle", size:"200x200" %>
+        <% else %>
+          <%= image_tag "/assets/home_logo.JPG", class:"circle", size:"200x200" %>
+        <% end %>
+      </div>
+      <div class="main-contents-container__box__wrapper__title">
+        <p class="content-title">Live Title</p>
+        <%= @live.name %>
+      </div>
+      <div class="main-contents-container__box__wrapper__date">
+        <p class="content-title">Date</p>
+        <%= @live.date %>
+      </div>
+      <div class="main-contents-container__box__wrapper__concept">
+        <p class="content-title" >concept</p>
+        <%= @live.concept %>
+      </div>
+      <div class="main-contents-container__box__wrapper__target">
+        <p class="content-title" >Target Customer</p>
+        <%= @live.target %>
+      </div>
+      <div class="main-contents-container__box__wrapper__budget">
+        <p class="content-title" >Budget</p>
+        <%= @live.budget %>
+      </div>
+      <div class="main-contents-container__box__wrapper__edit btn">
+        edit concept
+      </div>
     </div>
-  </div>
+  </div> 
 </div>

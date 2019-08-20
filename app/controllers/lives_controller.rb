@@ -31,6 +31,7 @@ class LivesController < ApplicationController
 
   def show
     @live = Live.find(params[:id])
+
   end
 
   private

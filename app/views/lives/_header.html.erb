@@ -23,10 +23,11 @@
     </div>
     <div class="header__container__function col s3">
       <div class="header__container__function__menu">
-        <ul class="header__container__function__menu__list">
-          <li><%= link_to "New Live", new_user_life_path(user_id: @current_user.id) %></li>
-          <li><%= link_to "All Users", users_path %></li>
-          <li><%= link_to "Logout", logout_path, method:"POST" %></li>
+        <ul class="header__container__function__menu__list ">
+          <li class="waves-effect waves-teal"><%= link_to "Home", "/users/#{@current_user.id}/lives" %></li>
+          <li class="waves-effect waves-teal"><%= link_to "New Live", "/users/#{@current_user.id}/lives/new" %></li>
+          <li class="waves-effect waves-teal"><%= link_to "All Users", "/users" %></li>
+          <li class="waves-effect waves-teal"><%= link_to "Logout", "/logout", method:"POST" %></li>
         </ul>
       </div>
     </div>
