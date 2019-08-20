@@ -26,14 +26,14 @@ class LivesController < ApplicationController
 
   def update
     @live = Live.find(params[:id])
-    if @live.save
+    if @live.update(live_params)
+      @live.save
       flash[:notice] = "Edit Success!"
       redirect_to "/users/#{@current_user.id}/lives/#{@live.id}"
     else
       @error_message = "Has some error. Please check again."
       render :edit
     end
-
   end
 
   def delete
@@ -41,7 +41,7 @@ class LivesController < ApplicationController
 
   def show
     @live = Live.find(params[:id])
-    @user = User.all
+    @user = User.all.includes(:live)
   end
 
   private
