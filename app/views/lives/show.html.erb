@@ -1,6 +1,10 @@
-<%= render "lives/header" %>
+<% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+  <%= render "lives/header" %>
+<% end %>
 <div class="row contents">
-  <%= render 'lives/sidenav', class:"col s1" %>
+  <% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+    <%= render 'lives/sidenav', class:"col s1" %>
+  <% end %>
   <div class="main-contents ">
     <div class="row">
       <div class="col s12">
@@ -11,22 +15,22 @@
           <li class="tab col s3"><a href="#calender">calender</a></li>
         </ul>
       </div>
-        <% cache "@live", expires_in: 1.minutes, skip_digest:true do %>
+        <% cache @live.concept, expires_in: 1.minutes, skip_digest:true do %>
           <div id="concept" class="col s12 tab-contents">
             <%= render partial: "lives/concept" %>
           </div>
         <% end %>
-        <% cache "@live", expires_in: 1.minutes, skip_digest:true do %>
+        <% cache @live, expires_in: 1.minutes, skip_digest:true do %>
           <div id="tasks" class="col s12 tab-contents">
             <%= render partial: "lives/tasks" %>
           </div>
         <% end %>
-        <% cache "@live", expires_in: 1.minutes, skip_digest:true do %>
+        <% cache @live.users, expires_in: 1.minutes, skip_digest:true do %>
           <div id="staff" class="col s12 tab-contents">
             <%= render partial: "lives/staff" %>
           </div>
         <% end %>
-        <% cache "@live", expires_in: 1.minutes, skip_digest:true do %>
+        <% cache @live, expires_in: 1.minutes, skip_digest:true do %>
           <div id="calender" class="col s12 tab-contents">
             <%= render partial: "lives/calender" %>
           </div>

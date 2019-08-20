@@ -1,11 +1,15 @@
-<%= render "lives/header" %>
-<div class="row contents">
-  <%= render 'lives/sidenav', class:"col" %>
-  <div class="main-contents-new col">
-    <div class="main-contents-new__input">
-      <div class="main-contents-new__input__box">
-      <%= form_with model: @live, url: user_lives_path, local: true do |f| %>
-        <form>
+<% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+  <%= render "lives/header" %>
+<% end %>
+  <div class="row contents">
+    <% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+      <%= render 'lives/sidenav', class:"col " %>
+  <% end %>
+    <div class="main-contents-new col">
+      <div class="main-contents-new__input">
+        <div class="main-contents-new__input__box">
+          <%= form_with model: @live, url: user_lives_path, local: true do |f| %>
+          <form>
 
           <%# タイトル %>
           <p class="title center">

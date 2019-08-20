@@ -1,4 +1,6 @@
-<%= render 'lives/sidenav', class:"col s1" %>
+<% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+  <%= render 'lives/sidenav', class:"col " %>
+<% end %>
 <div class="container-input-user">
   <div class="container-input-user__box">
     <%= form_with model: @user, local: true, class:"inputs" do |f| %>

@@ -1,20 +1,31 @@
-<div class="main-contnts-container">
+<div class="main-contents-container">
   <div class="main-contents-container__staff">
     <% @live.users.each do |user| %>
-      <div class="col s12 m7 center cards">
+      <div class="staff-cards s12 m6 l4">
         <div class="card">
-          <div class="card-image">
+          <div class="card__image center">
             <% if user.image? %>
               <%= image_tag user.image.url, class:"user-image", size:"200x200" %>
             <%else%>
-              <%= image_tag "/assets/home_logo.JPG" %>
+              <%= image_tag "/assets/home_logo.JPG", size:"200x200"  %>
             <% end %>
-            <span class="card-title"><%= user.nickname %> </span>
+            <p class="card-title center"><%= user.nickname %> </p>
           </div>
-          <div class="card-content">
-            <p>Name：<%= user.nickname%></p>
-            <p class="content-title">Tasks</p>
-            <ul class="left tasks">
+          <div class="card__content">
+            <p class="content__content__title">Tasks</p>
+            <ul class="card__content__tasks left tasks">
+              <li>Task A-1</li>
+              <li>Task A-2</li>
+              <li>Task A-1</li>
+              <li>Task A-2</li>
+              <li>Task A-1</li>
+              <li>Task A-2</li>
+              <li>Task A-1</li>
+              <li>Task A-2</li>
+              <li>Task A-1</li>
+              <li>Task A-2</li>
+              <li>Task A-1</li>
+              <li>Task A-2</li>
               <li>Task A-1</li>
               <li>Task A-2</li>
             </ul>

@@ -1,5 +1,10 @@
-<%= render "lives/header" %>
-<%= render 'lives/sidenav', user: @user, class:"col s1" %>
+<% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+  <%= render "lives/header" %>
+<% end %>
+  <div class="row contents">
+    <% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+      <%= render 'lives/sidenav', class:"col " %>
+    <% end %>
   <div class="container-user col s11">
     <div class="container-user__box">
       <table border="1px" bordercolor="#ff0000" class="container-user__box__table">
