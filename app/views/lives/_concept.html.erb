@@ -12,24 +12,32 @@
         <p class="content-title">Live Title</p>
         <%= @live.name %>
       </div>
-      <div class="main-contents-container__box__wrapper__date">
-        <p class="content-title">Date</p>
-        <%= @live.date %>
-      </div>
-      <div class="main-contents-container__box__wrapper__concept">
-        <p class="content-title" >concept</p>
-        <%= @live.concept %>
-      </div>
-      <div class="main-contents-container__box__wrapper__target">
-        <p class="content-title" >Target Customer</p>
-        <%= @live.target %>
-      </div>
-      <div class="main-contents-container__box__wrapper__budget">
-        <p class="content-title" >Budget</p>
-        <%= @live.budget %>
-      </div>
+      <% if @live.date? %>
+        <div class="main-contents-container__box__wrapper__date">
+          <p class="content-title">Date</p>
+          <%= @live.date.strftime("%Y/%m/%d(%a)") %>
+        </div>
+      <% end %>
+      <% if @live.concept? %>
+        <div class="main-contents-container__box__wrapper__concept">
+          <p class="content-title" >concept</p>
+          <%= @live.concept %>
+        </div>
+      <% end %>
+      <% if @live.target? %>
+        <div class="main-contents-container__box__wrapper__target">
+          <p class="content-title" >Target Customer</p>
+          <%= @live.target %>
+        </div>
+      <% end %>
+      <% if @live.budget? %>
+        <div class="main-contents-container__box__wrapper__budget">
+          <p class="content-title" >Budget</p>
+          <%= @live.budget %>
+        </div>
+      <% end %>
       <div class="main-contents-container__box__wrapper__edit btn">
-        edit concept
+        edit live concept
       </div>
     </div>
   </div> 
