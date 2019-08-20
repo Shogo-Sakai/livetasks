@@ -12,7 +12,11 @@ Rails.application.routes.draw do
 
   # ネスト
   resources :users do
-    resources :lives
+    resources :lives 
   end
+
+  # タスク
+  resources :tasks
+  # ルート
   root "home#index"
 end

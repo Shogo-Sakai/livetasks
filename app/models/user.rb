@@ -15,4 +15,5 @@ class User < ApplicationRecord
   has_many :lives
   has_many :staffs
   has_many :staff_lives, through: :staffs, source: :live
+  has_many :tasks
 end

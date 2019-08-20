@@ -11,5 +11,5 @@ class Live < ApplicationRecord
   # アソシエーション
   has_many :staffs
   has_many :users, through: :staffs
-
+  has_many :tasks
 end
