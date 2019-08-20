@@ -190,6 +190,7 @@
   height:100%;
 }
 
+// タブ内
 .main-contents-container{
   width: calc(100% - 30px);
   height: calc(100vh - 200px - 48px);
@@ -236,5 +237,14 @@
         margin-top: 20px;
       }
     }
+  }
+}
+
+.main-contents-container{
+  overflow: auto;
+  &__staff{
+   display:flex;
+   justify-content: center;
+   flex-wrap: wrap;
   }
 }

@@ -11,22 +11,22 @@
           <li class="tab col s3"><a href="#calender">calender</a></li>
         </ul>
       </div>
-            <% cache "@live" do %>
+        <% cache "@live", expires_in: 1.minutes, skip_digest:true do %>
           <div id="concept" class="col s12 tab-contents">
-              <%= render partial: "lives/concept" %>
+            <%= render partial: "lives/concept" %>
           </div>
         <% end %>
-        <% cache "@live" do %>
+        <% cache "@live", expires_in: 1.minutes, skip_digest:true do %>
           <div id="tasks" class="col s12 tab-contents">
             <%= render partial: "lives/tasks" %>
           </div>
         <% end %>
-        <% cache "@live" do %>
+        <% cache "@live", expires_in: 1.minutes, skip_digest:true do %>
           <div id="staff" class="col s12 tab-contents">
             <%= render partial: "lives/staff" %>
           </div>
         <% end %>
-        <% cache "@live" do %>
+        <% cache "@live", expires_in: 1.minutes, skip_digest:true do %>
           <div id="calender" class="col s12 tab-contents">
             <%= render partial: "lives/calender" %>
           </div>

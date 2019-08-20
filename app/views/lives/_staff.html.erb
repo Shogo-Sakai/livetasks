@@ -1,1 +1,26 @@
-Staff and tasks
+<div class="main-contnts-container">
+  <div class="main-contents-container__staff">
+    <% @live.users.each do |user| %>
+      <div class="col s12 m7 center cards">
+        <div class="card">
+          <div class="card-image">
+            <% if user.image? %>
+              <%= image_tag user.image.url, class:"user-image", size:"200x200" %>
+            <%else%>
+              <%= image_tag "/assets/home_logo.JPG" %>
+            <% end %>
+            <span class="card-title"><%= user.nickname %> </span>
+          </div>
+          <div class="card-content">
+            <p>Name：<%= user.nickname%></p>
+            <p class="content-title">Tasks</p>
+            <ul class="left tasks">
+              <li>Task A-1</li>
+              <li>Task A-2</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

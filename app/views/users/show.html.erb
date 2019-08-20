@@ -24,7 +24,7 @@
             </div>
             <% if @user.id == @current_user.id %>
               <div class="card-action">
-                <a href=<%= edit_user_path %>>Edit User Account</a>
+                <a href="/users/<%= @current_user.id %>/edit">Edit User Account</a>
                 <a href="#">delete?</a>
               </div>
             <% end %>

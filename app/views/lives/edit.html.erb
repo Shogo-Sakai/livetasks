@@ -4,12 +4,12 @@
   <div class="main-contents-new col">
     <div class="main-contents-new__input">
       <div class="main-contents-new__input__box">
-      <%= form_with model: @live, url: user_lives_path, local: true do |f| %>
+      <%= form_with model: @live, url: "/users/#{@current_user.id}/lives/#{@live.id}", local: true do |f| %>
         <form>
 
           <%# タイトル %>
           <p class="title center">
-            New Project
+            Edit Project
           </p>
           <%# メッセージ %>
           <p class="message center red-text">
@@ -48,7 +48,7 @@
               <div class="file-field input-field">
                 <div class="btn">
                   <span>File</span>
-                  <%= f.file_field :image %>
+                  <%= f.file_field :image,id:"image", value:@live.image %>
                 </div>
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text">
@@ -105,7 +105,7 @@
 
           <%# サブミットボタン %>
           <div class="row submit-button center">
-            <button class="btn waves-effect waves-light" type="submit" name="action">new project
+            <button class="btn waves-effect waves-light" type="submit" name="action">Edit project
               <i class="material-icons right">send</i>
             </button>
           </div>

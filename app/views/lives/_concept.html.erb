@@ -33,11 +33,11 @@
       <% if @live.budget? %>
         <div class="main-contents-container__box__wrapper__budget">
           <p class="content-title" >Budget</p>
-          <%= @live.budget %>
+          <%= @live.budget.to_s(:delimited) %>円
         </div>
       <% end %>
-      <div class="main-contents-container__box__wrapper__edit btn">
-        edit live concept
+      <div class="main-contents-container__box__wrapper__edit">
+        <%= link_to "edit live concept","/users/#{@current_user.id}/lives/#{@live.id}/edit", class:"btn" %>
       </div>
     </div>
   </div> 

@@ -13,7 +13,7 @@ class LivesController < ApplicationController
     # debugger
     if @live.save
       flash[:notice] = "Created new Live Project!"
-      redirect_to user_life_path(user_id: session[:user_id],id: @live.id)
+      redirect_to "/users/#{@current_user.id}/lives/#{@live.id}"
     else
       @error_message = "Has some error. Please check again."
       render :new
@@ -21,9 +21,19 @@ class LivesController < ApplicationController
   end
 
   def edit
+    @live = Live.find(params[:id])
   end
 
   def update
+    @live = Live.find(params[:id])
+    if @live.save
+      flash[:notice] = "Edit Success!"
+      redirect_to "/users/#{@current_user.id}/lives/#{@live.id}"
+    else
+      @error_message = "Has some error. Please check again."
+      render :edit
+    end
+
   end
 
   def delete
@@ -31,7 +41,7 @@ class LivesController < ApplicationController
 
   def show
     @live = Live.find(params[:id])
-
+    @user = User.all
   end
 
   private
