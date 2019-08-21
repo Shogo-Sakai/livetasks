@@ -1,0 +1,91 @@
+<% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+  <%= render "lives/header" %>
+<% end %>
+  <div class="row contents">
+    <% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+      <%= render 'lives/sidenav', class:"col " %>
+  <% end %>
+    <div class="main-contents-new col">
+      <div class="main-contents-new__input">
+        <div class="main-contents-new__input__box">
+          <%= form_with model: @task, url: "/tasks", local: true do |f| %>
+          <form>
+
+          <%# タイトル %>
+          <p class="title center">
+            New Task
+          </p>
+          <%# メッセージ %>
+          <p class="message center red-text">
+            「※」mark content is necessary.
+          </p>
+          <%= render 'layouts/error_messages', model: f.object %>
+
+          <%# タスク内容 %>
+          <div class="row name">
+            <div class="input-field col s12">
+              <%= f.text_field :content, id:"content", type:"text", class:"validate" %>
+              <%= f.label :name, "※Content", class:"red-text" %>
+            </div>
+          </div>
+
+          <%# タスクの種類 %>
+
+          <%# タスクの担当 %>
+          <div class="row birthyear birthmonth birthday">
+            <%= f.label :user_id, "Who is in charge?" %>
+            </br>
+
+            <div class="input-field col s12">
+              <select class="task[user_id]" name="task[user_id]">
+                <option value="" disabled selected>Choose who to charge</option>
+                <%= @live.users.each do |user| %>
+                  <option value="<%= user.id %>" name="task[user_id]" class="task[user_id"><%= user.nickname %></option>
+                <% end %>
+              </select>
+              <label>Staff</label>
+            </div>
+
+            <%# <div class="input-field col s12"> %>
+              <%# <%= f.select(:user_id, @staff_name, {prompt:"Staff"}, {id:"user_id", class:"browser-default", name:"task[user_id]", value:"#{User.find_by(nickname: :user_id)}"}) %> %>
+              <%# form %>
+            <%# </div> %>
+          <%# </div> %>
+
+          <%# 開始日付 %>
+          <div class="row start_date">
+            <div class="input-field col s6">
+              <%= f.text_field :start_date, class:"datepicker", name:"task[start_date]" %>
+              <%= f.label :date , "Start Date"%>
+            </div>
+          <%# </div> %>
+
+          <%# 終了日付 %>
+          <%# <div class="row start_date"> %>
+            <div class="input-field col s6">
+              <%= f.text_field :finish_date, class:"datepicker", name:"task[finish_date]" %>
+              <%= f.label :finish_date , "Finish Date"%>
+            </div>
+          </div>
+
+          <%# memo %>
+          <div class="row memo">
+            <div class="input-field col s12">
+              <%= f.text_field :memo, id:"memo", type:"text"%>
+              <%= f.label :memo, "Memo" %>
+            </div>
+          </div>
+
+          <%# サブミットボタン %>
+          <div class="row submit-button center">
+            <button class="btn waves-effect waves-light" type="submit" name="action">new project
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+
+        </form>
+      <% end %>
+      </div>
+    </div>
+  </div> 
+</div>

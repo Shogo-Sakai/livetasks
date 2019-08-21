@@ -1,4 +1,4 @@
 class Task < ApplicationRecord
-  belongs_to: :users
-  belongs_to: :lives
+  belongs_to :user
+  belongs_to :live
 end

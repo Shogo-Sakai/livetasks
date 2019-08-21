@@ -20,9 +20,9 @@
             <%= render partial: "lives/concept" %>
           </div>
         <% end %>
-        <% cache @live, expires_in: 1.minutes, skip_digest:true do %>
+        <% cache @tasks , expires_in: 1.minutes, skip_digest:true do %>
           <div id="tasks" class="col s12 tab-contents">
-            <%= render partial: "lives/tasks" %>
+            <%= render partial: "tasks/index" %>
           </div>
         <% end %>
         <% cache @live.users, expires_in: 1.minutes, skip_digest:true do %>
