@@ -45,7 +45,8 @@ class LivesController < ApplicationController
     session[:live_id] = nil
     @live = Live.find(params[:id])
     session[:live_id] = @live.id 
-    @user = User.all.includes(:live)
+    @user = User.all.includes(:live, :task)
+    @tasks = Task.where(live_id: @live.id).order(finish_date: "ASC")
   end
 
   private

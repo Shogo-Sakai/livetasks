@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:toggle, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.where(live_id: @live.id).ord(finish_date: "ASC")
+    @tasks = Task.where(live_id: @live.id).order(finish_date: "ASC")
   end
 
   def new

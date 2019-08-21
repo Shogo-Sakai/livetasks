@@ -14,20 +14,9 @@
           <div class="card__content">
             <p class="content__content__title">Tasks</p>
             <ul class="card__content__tasks left tasks">
-              <li>Task A-1</li>
-              <li>Task A-2</li>
-              <li>Task A-1</li>
-              <li>Task A-2</li>
-              <li>Task A-1</li>
-              <li>Task A-2</li>
-              <li>Task A-1</li>
-              <li>Task A-2</li>
-              <li>Task A-1</li>
-              <li>Task A-2</li>
-              <li>Task A-1</li>
-              <li>Task A-2</li>
-              <li>Task A-1</li>
-              <li>Task A-2</li>
+              <% user.tasks.where(live_id: @live.id).each do |task| %>
+                <li><%= task.content %></li>
+              <% end %>
             </ul>
           </div>
         </div>

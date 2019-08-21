@@ -15,9 +15,11 @@
     <div class="header__container__task-info col s6">
       <div class="header__container__task-info__box">
         <ul class="header__container__task-info__box__tasks">
-          <li class="livetitle">Live A</li>
-          <li>Task 1</li>
-          <li>Task 2</li>
+          <li class="livetitle"><%= Live.find(session[:live_id]).name %></li>
+          <p>Your Tasks</p>
+          <% @current_user.tasks.where(live_id: session[:live_id]).each do |task| %>
+          <li><%= task.content %></li>
+          <% end %>
         </ul>
       </div>
     </div>
