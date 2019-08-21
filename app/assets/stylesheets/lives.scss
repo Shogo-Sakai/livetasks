@@ -195,6 +195,7 @@
 .main-contents-container{
   width: calc(100% - 30px);
   height: calc(100vh - 200px - 48px);
+  margin:0;
   overflow:auto;
   display: flex;
   justify-content: center;

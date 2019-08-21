@@ -1,1 +1,3 @@
-<%= render "tasks/index" %>
+<% cache do %>
+  <%= render @index %>
+<% end %>

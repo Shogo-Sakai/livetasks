@@ -1,15 +1,65 @@
-<div class="main-contents-container">
+<div class="main-contents-container ">
   <div class="main-contents-container__task-wrapper">
     <div class="main-contents-container__task-wrapper__contents">
-      <ul>
-        <li>finish</li>
-        <li>content</li>
-        <li>staff</li>
-        <li>start date</li>
-        <li>finish date</li>
-        <li>memo</li>
-      </ul>
-      <%= link_to "create a task", "/tasks/new", class:"left" %>
+      <table class="highlight responsive-table">
+
+        <%# タイトル %>
+        <caption>
+          <a class="center">Project Tasks</a>
+          <%= link_to "Create New Task", "/tasks/new", class:"right"%>
+        </caption>
+
+        <%# カラム %>
+        <thead>
+          <tr >
+            <th class="center">Done</th>
+            <th class="center">Content</th>
+            <th class="center">Staff</th>
+            <th class="center">Start Date</th>
+            <th class="center">Finish Date</th>
+            <th class="center">Memo</th>
+            <th class="center">Edit</th>
+            <th class="center">Delete</th>
+          </tr>
+        </thead>
+
+        <%# 中身 %>
+        <tbody>
+          <% @tasks.each do |task|%>
+          <tr>
+            <td>
+              <label>
+                <input name="session[finish]" type="hidden" value="false">
+                <input type="checkbox" class="filled-in" name="session[finish]" id="session_finish" value="true" data-remote="true" data-url="/toggle_finish/<%= task.id %>" data-method="POST" />
+                <span></span>
+            </td>
+            <td>
+              <%= task.content %>
+            </td>
+            <td>
+              <%= task.user.nickname %>
+            </td>
+            <td>
+              <%= task.start_date %>
+            </td>
+            <td>
+              <%= task.finish_date %>
+            </td>
+            <td>
+              <%= task.memo %>
+            </td>
+                </label>
+            <td>
+              <a class="btn waves-effect waves-teal" href="/tasks/<%= task.id %>/edit">edit</a>
+            </td>
+            <td>
+              <a class="btn red waves-effect waves-teal" href="/tasks/<%= task.id %>" data-confirm="Are you sure?" data-method="DELETE">delete</a>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
     </div>
   </div>
 </div>

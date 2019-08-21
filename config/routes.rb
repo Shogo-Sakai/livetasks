@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   # タスク
+  post "toggle_finish/:id", to: "tasks#toggle"
   resources :tasks
   # ルート
   root "home#index"
