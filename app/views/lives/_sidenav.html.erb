@@ -1,5 +1,5 @@
 <%# サイドバー %>
-  <ul id="slide-out" class="sidenav" data-no-turbolink="true" >
+  <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
       <div class="background">
         <%=image_tag "/assets/home_logo.JPG", size:"200x200" %>
@@ -22,9 +22,9 @@
       <li><a href="/users/<%=@current_user.id%>/lives/<%= live.id %>" class="waves-effect"><%= live.name %></a></li>
     <% end %>
   </ul>
-  <div class="sidenavbar waves-effect sidenav-trigger" data-target="slide-out" data-no-turbolink="true" >
-    <div class="rotate" data-no-turbolink="true" >
-      <a href="#" data-target="slide-out" class="sidenav-trigger white-text center-align" data-no-turbolink="true" >
+  <div class="sidenavbar waves-effect sidenav-trigger" data-target="slide-out">
+    <div class="rotate">
+      <a href="#" data-target="slide-out" class="sidenav-trigger white-text center-align">
         menu
       </a>
     </div>
