@@ -72,3 +72,6 @@ gem 'enum_help'
 # 写真アップロード
 gem 'carrierwave'
 gem 'mini_magick'
+# カレンダー
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'

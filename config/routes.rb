@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'calendar/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # ユーザーログイン関係
   get "/users/signup", to: "users#signup", as: "new_registration_user"
@@ -18,6 +19,10 @@ Rails.application.routes.draw do
   # タスク
   post "toggle_finish/:id", to: "tasks#toggle"
   resources :tasks
+
+  # カレンダー
+  resources :calendars, only: [:index, :show]
+
   # ルート
   root "home#index"
 end

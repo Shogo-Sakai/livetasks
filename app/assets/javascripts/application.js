@@ -11,8 +11,14 @@
 // about supported directives.
 // 
 //= require jquery 
+//= require moment
+//= require fullcalendar
 //= require rails-ujs
 //= require materialize
 //= require activestorage
 //= require_tree .
 
+  $(document).ready(function(){
+    $('#calendar').fullCalendar({
+    });
+  });
