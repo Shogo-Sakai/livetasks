@@ -15,10 +15,14 @@
     <div class="header__container__task-info col s6">
       <div class="header__container__task-info__box">
         <ul class="header__container__task-info__box__tasks">
-          <li class="livetitle"><%= Live.find(session[:live_id]).name %></li>
-          <p>Your Tasks</p>
-          <% @current_user.tasks.where(live_id: session[:live_id]).each do |task| %>
-          <li><%= task.content %></li>
+          <% if session[:live_id] %>
+            <li class="livetitle"><%= Live.find(session[:live_id]).name %></li>
+            <p>Your Tasks</p>
+            <% @current_user.tasks.where(live_id: session[:live_id]).each do |task| %>
+            <li><%= task.content %></li>
+            <% end %>
+          <% else %>
+            <p>お知らせをご覧ください。</p>
           <% end %>
         </ul>
       </div>

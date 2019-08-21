@@ -1,4 +1,3 @@
 class Calendar < ApplicationRecord
-  belongs_to :user
-  belongs_to :
+  belongs_to :live
 end

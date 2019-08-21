@@ -1,5 +1,6 @@
 class LivesController < ApplicationController
   before_action :set_current_user
+  before_action :set_session_live, only: :show
   before_action :set_live_tasks, only: :show
   def index
   end
@@ -42,9 +43,6 @@ class LivesController < ApplicationController
   end
 
   def show
-    session[:live_id] = nil
-    @live = Live.find(params[:id])
-    session[:live_id] = @live.id 
     @user = User.all.includes(:live, :task)
     @tasks = Task.where(live_id: @live.id).order(finish_date: "ASC")
   end
@@ -56,6 +54,12 @@ class LivesController < ApplicationController
 
   def set_live_tasks
     @tasks = Live.find(session[:live_id]).tasks.all
+  end
+
+  def set_session_live
+    session[:live_id] = nil
+    @live = Live.find(params[:id])
+    session[:live_id] = @live.id 
   end
 
   # ユーザー関係

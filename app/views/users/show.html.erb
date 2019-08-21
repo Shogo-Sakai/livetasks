@@ -1,8 +1,12 @@
 <% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
-  <%= render 'lives/sidenav', class:"col " %>
+  <%= render "lives/header" %>
 <% end %>
-  <div class=" container-show col s11">
-    <div class=" container-show__user-card ">
+  <div class="row contents">
+    <% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+      <%= render 'lives/sidenav', class:"col " %>
+    <% end %>
+  <div class="container-user col s11">
+    <div class=" container-user__user-card ">
       <div>
         <div class="col s12 m7 center cards">
           <div class="card">

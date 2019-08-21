@@ -38,16 +38,16 @@
 
 // show
 
-.container-show{
-  position:absolute;
-  top:0;
-  left:0;
-  height:100vh;
-  width:100vw;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  overflow: auto;
+.container-user{
+  // position:absolute;
+  // top:0;
+  // left:0;
+  // height:100vh;
+  // width:100vw;
+  // display:flex;
+  // justify-content: center;
+  // align-items: center;
+  // overflow: auto;
   &__user-card{
     .cards{
       .card{

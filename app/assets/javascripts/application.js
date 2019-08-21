@@ -16,9 +16,19 @@
 //= require rails-ujs
 //= require materialize
 //= require activestorage
+//= require jquery.turbolinks
+//= require turbolinks
 //= require_tree .
 
-  $(document).ready(function(){
-    $('#calendar').fullCalendar({
-    });
+$(function(){
+  function eventCalendar(){
+    return $('#calendar').fullCalendar({});
+  };
+  function clearCalendar(){
+    $('#calendar').html('');
+  };
+  $(document).on('turbolinks:load', function(){
+    eventCalendar();
   });
+  $(document).on('turbolinks:before-cache', clearCalendar);
+});
