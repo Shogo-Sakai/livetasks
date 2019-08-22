@@ -54,9 +54,9 @@ class TasksController < ApplicationController
 
   def calendar
     @tasks = Task.where(live_id: @live.id)
-    respond_to do |format|
-      format.html
-      format.json { render :json => @tasks }
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render :json => @tasks }
   end
 
   private

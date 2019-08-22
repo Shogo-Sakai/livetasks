@@ -18,11 +18,9 @@ Rails.application.routes.draw do
 
   # タスク
   post "toggle_finish/:id", to: "tasks#toggle"
-  get "task_calendar/:id",  to: "tasks#calendar", defaults: {format: 'json'}
   resources :tasks
 
   # カレンダー
-  resources :calendars, only: [:index, :show]
 
   # ルート
   root "home#index"
