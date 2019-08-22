@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_birthdate, only: [:signup, :create, :edit, :update]
-  before_action :set_user, only: [:show, :edit, :update]
-  before_action :set_current_user, only: [:index, :show, :edit, :search]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_user, only: [:index, :show, :edit, :search, :destroy]
   before_action :authenticate_user, only: [:show, :edit, :update]
   before_action :forbid_login_user, only: [:login_form, :login, :signup, :create]
   before_action :ensure_correct_user, only: [:edit, :update]
@@ -68,7 +68,16 @@ class UsersController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    if @user.destroy
+      session[:user_id] = nil
+      session[:live_id] = nil
+      flash[:notice] = "User Deleted."
+      redirect_to root_path
+    else
+      @error_message = "Has some error. Please check again."
+      render :show
+    end
   end
 
   def search

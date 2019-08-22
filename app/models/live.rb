@@ -9,7 +9,7 @@ class Live < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   # アソシエーション
-  has_many :staffs
-  has_many :users, through: :staffs
-  has_many :tasks
+  has_many :staffs , dependent: :destroy
+  has_many :users , through: :staffs
+  has_many :tasks , dependent: :destroy
 end

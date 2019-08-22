@@ -31,7 +31,7 @@
             <% if @user.id == @current_user.id %>
               <div class="card-action">
                 <a href="/users/<%= @current_user.id %>/edit">Edit User Account</a>
-                <a href="#">delete?</a>
+                <a href="/users/<%= @current_user.id %>" data-confirm="Are you sure?" data-method="DELETE" class="red-text">delete</a>
               </div>
             <% end %>
           </div>

@@ -39,7 +39,17 @@ class LivesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    live = Live.find(params[:id])
+    if live.destroy
+      session[:live_id] = nil
+      flash[:notice] = "Project Deleted."
+      redirect_to "/users/#{@current_user.id}/lives"
+    else
+      @error_message = "Has some error. Please check again."
+      render "/users/#{@current_user.id}/lives/#{@live.id}/#concept"
+    end
+    
   end
 
   def show

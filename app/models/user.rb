@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   # アソシエーション
   has_many :lives
-  has_many :staffs
-  has_many :staff_lives, through: :staffs, source: :live
-  has_many :tasks
+  has_many :staffs , dependent: :delete_all
+  has_many :staff_lives, through: :staffs , source: :live, dependent: :delete_all
+  has_many :tasks, dependent: :delete_all
 end
