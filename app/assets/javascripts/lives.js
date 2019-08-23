@@ -11,18 +11,26 @@ $(document).on('turbolinks:load', function(){
 });
 
   // サイドナビバー
-  // document.addEventListener('turbolinks:load', function() {
-  //   var elems = document.querySelectorAll('.sidenav');
-  //   var instances = M.Sidenav.init(elems, options);
-  // });
 
-$(document).on('ready turbolinks:load', function(){
-  elem = document.querySelector('#slide-out');
-  instance = new M.Sidenav(elem, {});
-  });
 
-$(document).on('ready turbolinks:before-visit', function(){
-  elem = document.querySelector('#slide-out');
-  instance = M.Sidenav.getInstance(elem);
-  instance.destroy()
-  });
+// $(window).bind("turbolinks:load", function(){
+//   if((document.URL.match('/signup/') || document.URL.match('/login/'))){
+//   }else{
+    $(document).on('ready turbolinks:load', function(){
+      if($('#slide-out').length){
+        elem = document.querySelector('#slide-out');
+        instance = new M.Sidenav(elem, {});          
+      }
+      });
+    
+    $(document).on('ready turbolinks:before-visit', function(){
+      if($('#slide-out').length){
+        elem = document.querySelector('#slide-out');
+        instance = M.Sidenav.getInstance(elem);
+        if(instance){
+          instance.destroy()
+        }  
+      }
+      });  
+//   }
+// })

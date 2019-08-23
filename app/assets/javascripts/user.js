@@ -1,5 +1,5 @@
-$(function(){
-  $("#age-checkbox").change(function(){
+$(document).on('turbolinks:load', function(){
+  $("#age-checkbox").on('click',function(){
     var val = $('#age-checkbox:checked').val();
 
     if(val){
