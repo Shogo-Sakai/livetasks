@@ -15,6 +15,9 @@
             <p class="content__content__title">Tasks</p>
             <ul class="card__content__tasks left tasks">
               <% user.tasks.where(live_id: @live.id).each do |task| %>
+                <input name="session[finish]" type="hidden" value="false">
+                <input type="checkbox" class="filled-in" name="session[finish]" id="session_finish" value="true" data-remote="true" data-url="/toggle_finish/<%= task.id %>" data-method="POST" checked/>
+                <span></span>
                 <li><%= task.content %></li>
               <% end %>
             </ul>
