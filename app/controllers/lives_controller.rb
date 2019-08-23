@@ -47,7 +47,7 @@ class LivesController < ApplicationController
       redirect_to "/users/#{@current_user.id}/lives"
     else
       @error_message = "Has some error. Please check again."
-      render "/users/#{@current_user.id}/lives/#{@live.id}/#concept"
+      render :index
     end
     
   end
