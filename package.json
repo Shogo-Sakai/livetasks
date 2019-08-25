@@ -9,5 +9,8 @@
   "main": "index.js",
   "repository": "https://github.com/Shogo-Sakai/livetasks.git",
   "author": "ShowGo_JP <shogosakai73@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.39.2"
+  }
 }
