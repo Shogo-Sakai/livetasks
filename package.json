@@ -2,6 +2,7 @@
   "name": "livetasks",
   "private": true,
   "dependencies": {
+    "jquery": "^3.4.1",
     "materialize-css": "^1.0.0"
   },
   "version": "1.0.0",
