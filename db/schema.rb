@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_034250) do
+ActiveRecord::Schema.define(version: 2019_08_25_120302) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,24 +33,6 @@ ActiveRecord::Schema.define(version: 2019_08_22_034250) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "calendars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "live_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["live_id"], name: "index_calendars_on_live_id"
-  end
-
-  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "title"
-    t.boolean "desp_flg"
-    t.datetime "start"
-    t.datetime "end"
-    t.string "allDay"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "lives", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.date "date"
@@ -60,6 +42,13 @@ ActiveRecord::Schema.define(version: 2019_08_22_034250) do
     t.string "image", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "start_time"
+    t.date "open_time"
+    t.string "place"
+    t.integer "price"
+    t.string "entertainers"
+    t.string "file_place"
+    t.string "memo"
   end
 
   create_table "staffs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -102,7 +91,6 @@ ActiveRecord::Schema.define(version: 2019_08_22_034250) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "calendars", "lives", column: "live_id"
   add_foreign_key "staffs", "lives", column: "live_id"
   add_foreign_key "staffs", "users"
   add_foreign_key "tasks", "lives", column: "live_id"
