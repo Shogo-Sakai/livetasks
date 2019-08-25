@@ -19,7 +19,23 @@
             <li class="livetitle"><%= Live.find(session[:live_id]).name %></li>
             <p>Your Tasks</p>
             <% @current_user.tasks.where(live_id: session[:live_id]).each do |task| %>
-            <li><%= task.content %></li>
+              <li class="checkbox-row">
+                  <% if task.finish == true %>
+                    <label>
+                      <input name="session[finish]" type="hidden" value="false">
+                      <input type="checkbox" class="filled-in" name="session[finish]" id="session_finish" value="true" data-remote="true" data-url="/toggle_finish/<%= task.id %>" data-method="POST" checked/>
+                      <span></span>
+                    </label>
+                  <% else %>
+                    <label>
+                      <input name="session[finish]" type="hidden" value="false">
+                      <input type="checkbox" class="filled-in" name="session[finish]" id="session_finish" value="true" data-remote="true" data-url="/toggle_finish/<%= task.id %>" data-method="POST"/>
+                      <span></span>
+                    </label>
+                  <% end %>
+                <a class="truncate"><%= task.content %></a>
+                  <%# <span></span> %>
+              </li>
             <% end %>
           <% else %>
             <p>お知らせをご覧ください。</p>

@@ -15,7 +15,7 @@
             <p class="content__content__title">Tasks</p>
             <ul class="card__content__tasks left tasks">
               <% user.tasks.where(live_id: @live.id).each do |task| %>
-                <li>
+                <li class="checkbox-row">
                     <% if task.finish == true %>
                       <label>
                         <input name="session[finish]" type="hidden" value="false">

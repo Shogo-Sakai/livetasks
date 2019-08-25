@@ -9,8 +9,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  img{
-  }
 }
 
 .sidenavbar{
@@ -217,27 +215,6 @@
         font-size: 2rem;
         margin-top:20px;
       }
-      &__image{
-
-      }
-      &__title{
-
-      }
-      &__date{
-
-      }
-      &__concept{
-
-      }
-      &__target{
-
-      }
-      &__budget{
-
-      }
-      &__edit{
-        margin-top: 20px;
-      }
     }
   }
 }
@@ -268,4 +245,6 @@
   }
 }
 
-// calendar
+.checkbox-row{
+  display:flex;             
+}
