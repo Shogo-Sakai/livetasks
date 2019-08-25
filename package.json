@@ -1,5 +1,12 @@
 {
   "name": "livetasks",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "materialize-css": "^1.0.0"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Shogo-Sakai/livetasks.git",
+  "author": "ShowGo_JP <shogosakai73@gmail.com>",
+  "license": "MIT"
 }
