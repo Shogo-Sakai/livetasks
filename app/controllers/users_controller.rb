@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      session[:live_id] = nil
       flash[:notice]="Login Success!!"
       redirect_to user_lives_path(user_id:@user.id)
     else
