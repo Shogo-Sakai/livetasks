@@ -26,8 +26,8 @@
         <%# 中身 %>
         <tbody>
           <% @tasks.each do |task|%>
-          <tr>
-            <td>
+          <tr >
+            <td class="center">
               <% if task.finish == true %>
                 <label>
                   <input name="session[finish]" type="hidden" value="false">
@@ -42,25 +42,25 @@
                 </label>
               <% end %>
             </td>
-            <td>
-              <%= task.content %>
+            <td class="center">
+              <%= link_to task.content, "/tasks/#{task.id}" %>
             </td>
-            <td>
+            <td class="center">
               <%= task.user.nickname %>
             </td>
-            <td>
+            <td class="center">
               <%= task.start_date %>
             </td>
-            <td>
+            <td class="center">
               <%= task.finish_date %>
             </td>
-            <td>
+            <td class="center">
               <%= task.memo %>
             </td>
-            <td>
+            <td class="center">
               <a class="btn waves-effect waves-teal" href="/tasks/<%= task.id %>/edit">edit</a>
             </td>
-            <td>
+            <td class="center">
               <a class="btn red waves-effect waves-teal" href="/tasks/<%= task.id %>" data-confirm="Are you sure?" data-method="DELETE">delete</a>
             </td>
           </tr>

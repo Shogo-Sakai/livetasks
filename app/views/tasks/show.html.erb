@@ -1,0 +1,46 @@
+<% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+  <%= render "lives/header" %>
+<% end %>
+<div class="row contents">
+  <% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+    <%= render 'lives/sidenav', class:"col " %>
+  <% end %>
+  <div class="container-user col s11">
+    <div class="container-user__box">
+      <div class="main-contents-container__box__wrapper center">
+        <div class="main-contents-container__box__wrapper__title">
+          <p class="content-title">Task Detail</p>
+          <%= @task.content %>
+        </div>
+        <% if @task.user_id? %>
+          <div class="main-contents-container__box__wrapper__date">
+            <p class="content-title">Staff</p>
+            <%= @task.user.nickname %>
+          </div>
+        <% end %>
+        <% if @task.start_date? %>
+          <div class="main-contents-container__box__wrapper__date col s6">
+            <p class="content-title">Start date</p>
+            <%= @task.start_date.strftime("%Y/%m/%d") %>
+          </div>
+        <% end %>
+        <% if @task.finish_date? %>
+          <div class="main-contents-container__box__wrapper__date col s6">
+            <p class="content-title">Finish date</p>
+            <%= @task.finish_date.strftime("%Y/%m/%d") %>
+          </div>
+        <% end %>
+        <% if @task.memo? %>
+          <div class="main-contents-container__box__wrapper__date col s6">
+            <p class="content-title">Memo</p>
+            <%= @task.memo %>
+          </div>
+        <% end %>
+        <div class="main-contents-container__box__wrapper__date edit-wrapper col s12">
+          <%= link_to "edit","/tasks/#{@task.id}/edit", class:"btn edit" %>
+          <%= link_to "delete","/tasks/#{@task.id}", class:"btn red delete", method:"delete" %>
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>

@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_current_items
   before_action :set_tasks, only: :toggle
-  before_action :set_task, only: [:toggle, :edit, :update, :destroy]
+  before_action :set_task, only: [:toggle, :show, :edit, :update, :destroy]
 
   def index
     @tasks = Task.where(live_id: @live.id).order(finish_date: "ASC")
