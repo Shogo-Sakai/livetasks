@@ -14,12 +14,12 @@ $(document).on('turbolinks:load', function(){
 
 });
 
-  // サイドナビバー
+$(document).on('ready turbolinks:load', function() {
+  M.updateTextFields();
+});
+     
 
-
-// $(window).bind("turbolinks:load", function(){
-//   if((document.URL.match('/signup/') || document.URL.match('/login/'))){
-//   }else{
+// サイドナビバー
     $(document).on('ready turbolinks:load', function(){
       if($('#slide-out').length){
         elem = document.querySelector('#slide-out');
@@ -36,5 +36,3 @@ $(document).on('turbolinks:load', function(){
         }  
       }
       });  
-//   }
-// })

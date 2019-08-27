@@ -19,25 +19,25 @@
         </div>
       <% end %>
       <% if @live.open_time? %>
-        <div class="main-contents-container__box__wrapper__date s6">
+        <div class="main-contents-container__box__wrapper__date col s6">
           <p class="content-title">Open time</p>
           <%= @live.open_time.strftime("%H:%m") %>
         </div>
       <% end %>
       <% if @live.start_time? %>
-        <div class="main-contents-container__box__wrapper__date s6">
+        <div class="main-contents-container__box__wrapper__date col s6">
           <p class="content-title">Start time</p>
           <%= @live.start_time.strftime("%H:%m") %>
         </div>
       <% end %>
       <% if @live.place? %>
-        <div class="main-contents-container__box__wrapper__date">
+        <div class="main-contents-container__box__wrapper__date col s6">
           <p class="content-title">Place</p>
           <%= @live.place %>
         </div>
       <% end %>
       <% if @live.price? %>
-        <div class="main-contents-container__box__wrapper__date">
+        <div class="main-contents-container__box__wrapper__date col s6">
           <p class="content-title">Price</p>
           <%= @live.price.to_s(:delimited) %>円
         </div>
@@ -61,15 +61,15 @@
         </div>
       <% end %>
       <% if @live.budget? %>
-        <div class="main-contents-container__box__wrapper__budget">
+        <div class="main-contents-container__box__wrapper__budget col s6">
           <p class="content-title" >Budget</p>
           <%= @live.budget.to_s(:delimited) %>円
         </div>
       <% end %>
       <% if @live.file_place? %>
-        <div class="main-contents-container__box__wrapper__date">
+        <div class="main-contents-container__box__wrapper__date col s6">
           <p class="content-title">File place</p>
-          <%= @live.file_place %>
+          <%= link_to @live.file_place, target: :_blank %>
         </div>
       <% end %>
       <% if @live.memo? %>
