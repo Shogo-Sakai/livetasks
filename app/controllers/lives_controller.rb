@@ -59,7 +59,7 @@ class LivesController < ApplicationController
 
   private
   def live_params
-    params.require(:live).permit(:name, :date, :concept, :target, :budget,:image, { :user_ids => [] })
+    params.require(:live).permit(:name, :date, :concept, :target, :budget, :image, :start_time, :open_time, :place, :price, :entertainers, :file_place, :memo, { :user_ids => [] })
   end
 
   def set_live_tasks

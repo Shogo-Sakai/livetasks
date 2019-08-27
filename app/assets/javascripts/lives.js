@@ -8,6 +8,10 @@ $(document).on('turbolinks:load', function(){
     format: 'yyyy/mm/dd',
     showMonthAfterYear: true
   });
+
+  // 時間選択
+  $('.timepicker').timepicker();
+
 });
 
   // サイドナビバー
