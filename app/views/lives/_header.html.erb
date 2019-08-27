@@ -33,7 +33,7 @@
                       <span></span>
                     </label>
                   <% end %>
-                <a class="truncate"><%= task.content %></a>
+                <a class="truncate"><%= link_to task.content, "/tasks/#{task.id}" %></a>
                   <%# <span></span> %>
               </li>
             <% end %>

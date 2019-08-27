@@ -3,5 +3,5 @@ json.array!(@tasks) do |event|
   json.title    event.content
   json.start    event.start_date
   json.end      event.finish_date
-  # json.url      task_url(task, format: :html)
+  # json.url      event_url(event, format: :html)
 end
