@@ -18,6 +18,36 @@
           <%= @live.date.strftime("%Y/%m/%d(%a)") %>
         </div>
       <% end %>
+      <% if @live.open_time? %>
+        <div class="main-contents-container__box__wrapper__date s6">
+          <p class="content-title">Open time</p>
+          <%= @live.open_time.strftime("%H:%m") %>
+        </div>
+      <% end %>
+      <% if @live.start_time? %>
+        <div class="main-contents-container__box__wrapper__date s6">
+          <p class="content-title">Start time</p>
+          <%= @live.start_time.strftime("%H:%m") %>
+        </div>
+      <% end %>
+      <% if @live.place? %>
+        <div class="main-contents-container__box__wrapper__date">
+          <p class="content-title">Place</p>
+          <%= @live.place %>
+        </div>
+      <% end %>
+      <% if @live.price? %>
+        <div class="main-contents-container__box__wrapper__date">
+          <p class="content-title">Price</p>
+          <%= @live.price.to_s(:delimited) %>円
+        </div>
+      <% end %>
+      <% if @live.entertainers? %>
+        <div class="main-contents-container__box__wrapper__date">
+          <p class="content-title">Entertainers</p>
+          <%= @live.entertainers %>
+        </div>
+      <% end %>
       <% if @live.concept? %>
         <div class="main-contents-container__box__wrapper__concept">
           <p class="content-title" >concept</p>
@@ -36,9 +66,21 @@
           <%= @live.budget.to_s(:delimited) %>円
         </div>
       <% end %>
+      <% if @live.file_place? %>
+        <div class="main-contents-container__box__wrapper__date">
+          <p class="content-title">File place</p>
+          <%= @live.file_place %>
+        </div>
+      <% end %>
+      <% if @live.memo? %>
+        <div class="main-contents-container__box__wrapper__date">
+          <p class="content-title">Other memo</p>
+          <%= @live.memo %>
+        </div>
+      <% end %>
       <div class="main-contents-container__box__wrapper__edit">
-        <%= link_to "edit live concept","/users/#{@current_user.id}/lives/#{@live.id}/edit", class:"btn" %>
-        <%= link_to "delete project","/users/#{@current_user.id}/lives/#{@live.id}/", class:"btn red", method:"delete" %>
+        <%= link_to "edit live concept","/users/#{@current_user.id}/lives/#{@live.id}/edit", class:"btn edit" %>
+        <%= link_to "delete project","/users/#{@current_user.id}/lives/#{@live.id}/", class:"btn red delete", method:"delete" %>
       </div>
     </div>
   </div> 
