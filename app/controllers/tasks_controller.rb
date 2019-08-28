@@ -51,13 +51,6 @@ class TasksController < ApplicationController
     @task.update_attributes(finish: !@task.finish)
   end
 
-  def calendar
-    @tasks = Task.where(live_id: @live.id)
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render :json => @tasks }
-  end
-
   private
   def task_params
     # debugger

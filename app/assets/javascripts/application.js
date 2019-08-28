@@ -42,7 +42,9 @@ $(function(){
 
       // イベントを呼び出す
       $('#calendar').fullCalendar({
-        events: '/tasks.json',
+        events: 
+        '/tasks.json',
+        // events: '/lives.json',
         //カレンダー上部を年月で表示させる
         // titleFormat: 'YYYY年 M月',
         //曜日を日本語表示
