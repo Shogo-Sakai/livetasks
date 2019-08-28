@@ -9,7 +9,9 @@
             <%else%>
               <%= image_tag "/assets/home_logo.JPG", size:"200x200"  %>
             <% end %>
-            <p class="card-title center"><%= user.nickname %> </p>
+            <p class="card-title center">
+            <%= link_to user.nickname, "/users/#{user.id}" %>
+            </p>
           </div>
           <div class="card__content">
             <p class="content__content__title">Tasks</p>
