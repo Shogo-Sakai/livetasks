@@ -1,16 +1,45 @@
-<p class="notice-bord__title">
-※アプリケーションの使い方※
-</p>
+<div class="notice-bord__title">
+  <div class="dots">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  お知らせ
+  <div class="dots">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
 <p class="notice-bord__contents left-align">
   <% notice_contents = "
-  1.ライブを登録します。
-  2.タスクを作成します。
-  3.各スタッフに割り当てられたタスクを管理します。
-  4.カレンダーで進捗を確認します。
+  ※このサービスの使い方
+  1.右上の「New Live」から新規イベントを登録します。
+  　⇛イベント名（仮でもOK）さえ決まっていれば登録可能です。
+  2.「Concept」タブでイベントの詳細を確認できます。
+  3.「Task」タブの「Create a Task」からタスクを作成します。
+  　⇛作成時にタスク名と担当スタッフを指定する必要があります。
+  4.「Staff」タブからイベントスタッフに割り当てられたタスクを確認できます。
+  5.「Calender」タブでタスクやイベントの日程間が確認できます。
+  6.左の黄色menuから自分がスタッフとして所属するライブの切り替えや
+  　自分のアカウント詳細ページに飛ぶことができます。
+  </br>
   基本的な使い方は以上です。
-  このサービスを使用することで
+  このサービスを使用して
   ライブ当日までのタスクを
-  容易に管理することができます！
+  容易に管理しましょう！
   "%>
 <%= simple_format(notice_contents) %>
 </p>
