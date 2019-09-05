@@ -14,6 +14,7 @@ if Rails.env.production?
     }
     config.fog_directory     =  ENV['AWS_S3_BUCKET']
     # config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
+    config.asset_host = "https://s3.ap-northeast-1.amazonaws.com/livetask"
     config.cache_storage = :fog
   end
 
