@@ -13,7 +13,8 @@ if Rails.env.production?
       aws_secret_access_key: ENV['AWS_IAM_ACCESS_KEY'],
     }
     config.fog_directory     =  ENV['AWS_S3_BUCKET']
-    config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
+    # config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
+    config.cache_storage = :fog
   end
 
   # 日本語ファイル名の設定
