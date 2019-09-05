@@ -6,7 +6,7 @@
         <div class="card z-depth-3">
           <div class="card__image center">
             <% if user.image? %>
-              <%= image_tag user.image.url, class:"user-image", size:"200x200" %>
+              <%= image_tag user.image_url, class:"user-image", size:"200x200" %>
             <%else%>
               <%= image_tag "/assets/home_logo.JPG", size:"200x200"  %>
             <% end %>
