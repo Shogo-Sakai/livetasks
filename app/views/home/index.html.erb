@@ -5,7 +5,9 @@
         <%= image_tag "/assets/home_logo.JPG", size: "200x200" %>
       </div>
       <div class="wrapper-home__registration-box__about">
+
         <p class="waves-effect waves-light btn modal-trigger about" href="#modal1">About This Service</p>
+<%# modal %>　
         <div id="modal1" class="modal">
           <div class="modal-content">
             <h4>About This Service</h4>
@@ -17,12 +19,14 @@
           </div>
         </div>
       </div>
+
       <div class="wrapper-home__registration-box__home-menu">
         <ul class="menu center">
           <a class="waves-effect waves-light btn " href="<%= new_registration_user_path %>">New User</a>
           <a class="waves-effect waves-light btn " href="<%= login_user_path %>">Login</a>
         </ul>
       </div>
+      
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@
     <% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
       <%= render 'lives/sidenav', class:"col " %>
     <% end %>  <div class="main-contents-new ">
-      <div class="main-contents-new__input">
+      <div class="main-contents-new__input valign-wrapper">
         <div class="main-contents-new__input__box notice-bord">
           <%= render "lives/notice_contents"%>          
         </div>

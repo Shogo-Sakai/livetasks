@@ -1,5 +1,5 @@
-<div class="header">
-  <div class="row header__container">
+<div class="header z-depth-3">
+  <div class="row header__container ">
     <div class="header__container__user-info col s3">
       <div class="header__container__user-info__image">
         <%if @current_user.image?%>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="header__container__task-info col s6">
-      <div class="header__container__task-info__box">
+      <div class="header__container__task-info__box z-depth-3">
         <ul class="header__container__task-info__box__tasks">
           <% if session[:live_id] %>
             <li class="livetitle"><%= Live.find(session[:live_id]).name %></li>

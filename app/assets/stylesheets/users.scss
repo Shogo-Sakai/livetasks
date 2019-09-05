@@ -10,7 +10,7 @@
   top: 200px;
   left: 30px;
   padding:0;
-  overflow: auto;
+  // overflow: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +18,7 @@
     background-color:rgb(255, 255, 255);
     width:70%;
     max-width:600px;
-    height:80%;
+    // height:80%;
     padding:15px;
     margin:auto;
     border:1px solid gray;
@@ -46,11 +46,12 @@
   overflow: auto;
   display: flex;
   justify-content: center;
+  align-items: center;
   .card{
     background-color: white;
     width:400px;
     height: auto;
-    min-height:150px;
+    // min-height:150px;
     text-align: left;
     .card-content{
       border-top: 1px solid gray;
