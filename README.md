@@ -1,24 +1,33 @@
-# README
+Work Life Balance
+====
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Overview
 
-Things you may want to cover:
+　イベント企画者特化型のタスク管理アプリです。
+　This tool can manage your project and your tasks easily and simply before.
+Especially for the eventors.
 
-* Ruby version
+## Description
+　プロジェクトのコンセプトや全体タスク、スタッフの確認やそれぞれに割り振られているタスクを容易に確認することができます。カレンダーにもタスクの期限等を表示させている為、いつまでに完了すべきかの確認も可能です。
+  You can check your project's and staff's task easily and simply. Also, you can check it by your callender.
 
-* System dependencies
+## Demo
 
-* Configuration
 
-* Database creation
+## VS. 
 
-* Database initialization
+## Requirement
 
-* How to run the test suite
+## Usage
 
-* Services (job queues, cache servers, search engines, etc.)
+## Install
 
-* Deployment instructions
+## Contribution
 
-* ...
+## Licence
+
+[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
+
+## Author
+
+[tcnksm](https://github.com/tcnksm)
