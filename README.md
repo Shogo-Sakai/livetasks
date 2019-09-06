@@ -78,14 +78,19 @@ You can manage tasks by each Project.
 
 
 ## VS. 
+他のプロジェクト管理アプリと比較してイベント企画者にとって必要な情報のみで構成されているため、シンプルで使いやすい。
+To compare with other task manage applications, this app is simple and easy to use.
+
 
 ## Requirement
+特に必要なツールやライブラリはありまえせん。
+There are no any special requirements.
+
 
 ## Usage
+Demoを参照ください。
+Please refer to Demo.
 
-## Install
-
-## Contribution
 
 ## Licence
 
@@ -93,4 +98,5 @@ You can manage tasks by each Project.
 
 ## Author
 
-[tcnksm](https://github.com/tcnksm)
+[Shogo-Sakai](https://github.com/Shogo-Sakai)
+
