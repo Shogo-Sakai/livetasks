@@ -91,7 +91,7 @@ To compare with other task manage applications, this app is simple and easy to u
 
 ## Requirement
 
-特に必要なツールやライブラリはありまえせん。
+特に必要なツールやライブラリはありません。
 
 There are no any special requirements.
 
