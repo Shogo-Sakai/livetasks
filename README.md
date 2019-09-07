@@ -56,6 +56,7 @@ Now, you can check your project's concept, tasks, staffs, and calender!!
 
 
 5.タスク一覧からタスクを作成します。タスク名とタスクの担当は最低限必要です。
+
 Make a task from task index page. task name and staffs are necessary.
 
 ![newtask](https://uc170fef871f605db329367b0514.previews.dropboxusercontent.com/p/thumb/AAgq9slnhHNrcr0OkIo2OF5YP390jVj7GeIYVjs2srRxMwSkz0tObH49T-ij0VGRy-GUXxCxeslD12xuwYrnes1MxCasxBzVxxZuSrCvcIc28m1o01nhdj2qAyiJgDSrWALq-tkN3egrKvg6LyGYawwcTFPvxlTFbYoVo-I4hQwtK6MajzV7LWLTzHJxIfsqGLaQNWBqfWCDN7N8cLRuQ_14jl60ueyfm40SvpxqI7wMyNhvskYCr3mYoxixQMIrBBcEx5kXr8tyuzb1dGXm2B-VUt4OS6BajoPaN0zGof-teprENEB_-AxoSQxf4XhuQX-An1eL6B4hzV69dkB1jPjvJf3wOLUWc0ae0WSxY6VsoEQVt_O2ysJnEWT9ytBEVHV2BmS8aen4ZVfA4S6wZ40gYfbXZcSn5EWVjogYkQ99LA/p.png)
@@ -84,18 +85,21 @@ You can manage tasks by each Project.
 ## VS. 
 
 他のプロジェクト管理アプリと比較してイベント企画者にとって必要な情報のみで構成されているため、シンプルで使いやすい。
+
 To compare with other task manage applications, this app is simple and easy to use.
 
 
 ## Requirement
 
 特に必要なツールやライブラリはありまえせん。
+
 There are no any special requirements.
 
 
 ## Usage
 
 Demoを参照ください。
+
 Please refer to Demo.
 
 
