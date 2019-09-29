@@ -7,7 +7,6 @@ Overview
 
 　This tool can manage your project and your tasks easily and simply before.
 Especially for the eventors.
-
 ## Description
 
 プロジェクトのコンセプトや全体タスク、スタッフの確認やそれぞれに割り振られているタスクを容易に確認することができます。カレンダーにもタスクの期限等を表示させている為、いつまでに完了すべきかの確認も可能です。
