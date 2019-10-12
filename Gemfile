@@ -77,3 +77,9 @@ gem 'fog'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'jquery-turbolinks'
+
+# ログイン関係
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
