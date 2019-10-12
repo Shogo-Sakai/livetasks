@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    debugger
+    # debugger
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_lives_path(user_id: @user.id)
@@ -92,7 +92,7 @@ class UsersController < ApplicationController
   private
     def user_params
       # debugger
-      params.require(:user).permit(:nickname, :email, :password_digest, :profile, :birthyear, :birthmonth, :birthday, :age, :gender, :image)
+      params[:user].permit(:nickname, :email, :password, :password_confirmation, :profile, :birthyear, :birthmonth, :birthday, :age, :gender, :image)
     end
 
     def user_session_params
