@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_birthdate, only: [:signup, :create, :edit, :update]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_user, only: [:index, :show, :edit, :search, :destroy]
   before_action :authenticate_user, only: [:show, :edit]
   before_action :forbid_login_user, only: [:login_form, :login, :signup, :create]
   before_action :ensure_correct_user, only: [:edit]
@@ -32,11 +30,6 @@ class UsersController < ApplicationController
   end
 
   def logout
-    
-    # session[:user_id] = nil
-    # session[:live_id] = nil
-    flash[:notice] = "Logout Success."
-    redirect_to root_path
   end
 
   def create
@@ -91,64 +84,6 @@ class UsersController < ApplicationController
     def user_params
       # debugger
       params[:user].permit(:nickname, :email, :password, :password_confirmation, :profile, :birthyear, :birthmonth, :birthday, :age, :gender, :image)
-    end
-
-    def user_session_params
-      params.require(:user).permit(:email, :password_digest)
-    end
-
-    # ユーザーログイン関係
-    def set_user
-      @user = User.find(params[:id])
-    end
-
-    def set_current_user
-      @current_user = User.find(session[:user_id])
-    end
-
-    def authenticate_user
-      if @current_user == nil
-        flash[:notice] = "Need to Login"
-        redirect_to root_path
-      end
-    end
-
-    def forbid_login_user
-      if @current_user
-        flash[:notice] = "You are already logined."
-        redirect_to user_lives_path(user_id: @current_user)
-      end
-    end
-
-    def ensure_correct_user
-      if @current_user.id != params[:id].to_i
-        flash[:notice] = "You don't have access authorizations."
-        redirect_to user_lives_path(user_id: @current_user)
-      end
-    end
-
-        # 誕生日の表示メソッド
-    def set_birthdate
-      y = 1950
-      @year = []
-      while y <= 2009 do
-        @year << [y,y]
-        y += 1
-      end
-
-      m = 1
-      @month = []
-      while m <= 12 do
-        @month << [m,m]
-        m += 1
-      end
-
-      d = 1
-      @day =[]
-      while d <=31 do
-        @day << [d,d]
-        d += 1
-      end
     end
 
 end

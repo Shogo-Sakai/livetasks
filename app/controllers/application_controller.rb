@@ -1,17 +1,50 @@
 class ApplicationController < ActionController::Base
-  # protect_from_forgery with: :exception
+  # ログインしてない時の処理
+  def authenticate_user
+    if current_user.nil?
+      flash[:notice] = "Need to Login"
+      redirect_to root_path
+    end
+  end
 
-  # ログイン済みユーザーのみにアクセスを許可する
-  # before_action :authenticate_user!
+  # 既にログインしている時の処理
+  def forbid_login_user
+    if current_user
+      flash[:notice] = "You are already logined."
+      redirect_to user_lives_path(user_id: @current_user)
+    end
+  end
 
-  # deviseコントローラーにストロングパラメータを追加する
-  # before_action :configure_permitted_parameters, if: :devise_controller?
+  # ユーザーにアクセス権限がない時の処理
+  def ensure_correct_user
+    if current_user.id != params[:id].to_i
+      flash[:notice] = "You don't have access authorizations."
+      redirect_to user_lives_path(user_id: @current_user)
+    end
+  end
 
-  # protected
-  # def configure_permitted_parameters
-    # アカウント登録時
-    # devise_parameter_sanitizer.permit(:sign_up, keys: [ :nickname, :birthyear, :birthmonth, :birthday, :age, :gender, :profile])
-    # アカウント編集時
-#     devise_parameter_sanitizer.permit(:account_update, keys: [ :nickname, :birthyear, :birthmonth, :birthday, :age, :gender, :profile])
-#   end
+  # 誕生日の表示メソッド
+  def set_birthdate
+    y = 1950
+    @year = []
+    while y <= 2009 do
+      @year << [y,y]
+      y += 1
+    end
+
+    m = 1
+    @month = []
+    while m <= 12 do
+      @month << [m,m]
+      m += 1
+    end
+
+    d = 1
+    @day =[]
+    while d <=31 do
+      @day << [d,d]
+      d += 1
+    end
+  end
+  
 end

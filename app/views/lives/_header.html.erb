@@ -34,7 +34,6 @@
                     </label>
                   <% end %>
                 <a class="truncate"><%= link_to task.content, "/tasks/#{task.id}" %></a>
-                  <%# <span></span> %>
               </li>
             <% end %>
           <% else %>
@@ -49,7 +48,7 @@
           <li class="waves-effect waves-teal"><%= link_to "Home", "/users/#{@current_user.id}/lives" %></li>
           <li class="waves-effect waves-teal"><%= link_to "New Live", "/users/#{@current_user.id}/lives/new" %></li>
           <li class="waves-effect waves-teal"><%= link_to "All Users", "/users" %></li>
-          <li class="waves-effect waves-teal"><%= link_to "Logout", "/logout", method:"POST" %></li>
+          <li class="waves-effect waves-teal"><%= link_to "Logout", current_user_destroy_path, method:"DELETE" %></li>
         </ul>
       </div>
     </div>

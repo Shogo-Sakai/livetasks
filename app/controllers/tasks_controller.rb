@@ -13,7 +13,6 @@ class TasksController < ApplicationController
   
   def create
     @task = Task.new(task_params)
-    # debugger
     if @task.save
       flash[:notice] = "Made a new task."
       redirect_to "/users/#{@current_user.id}/lives/#{@live.id}/#tasks"
@@ -47,15 +46,12 @@ class TasksController < ApplicationController
   end
 
   def toggle
-    # debugger
     @task.update_attributes(finish: !@task.finish)
   end
 
   private
   def task_params
-    # debugger
     params.require(:task).permit(:kind, :content, :start_date, :finish_date, :finish, :memo, :user_id ).merge(live_id: @live.id )
-    # debugger
   end
 
   def set_tasks

@@ -1,10 +1,8 @@
 class LivesController < ApplicationController
-  before_action :set_current_user
   before_action :authenticate_live, except: [:index, :new, :create]
   before_action :authenticate_user
   before_action :set_session_live, only: :show
   before_action :set_live_tasks, only: :show
-  # before_action :ensure_correct_live, only: :show
   def index
   end
 
@@ -15,7 +13,6 @@ class LivesController < ApplicationController
 
   def create
     @live = Live.new(live_params)
-    # debugger
     if @live.save
       flash[:notice] = "Created new Live Project!"
       redirect_to "/users/#{@current_user.id}/lives/#{@live.id}"
@@ -70,33 +67,15 @@ class LivesController < ApplicationController
   end
 
   def set_session_live
-    # unless @current_user.staff_lives.ids.include?(params[:live_id])
-    #   flash[:notice] = "Sorry, please try again."
-    #   redirect_to user_lives_path(user_id: @current_user)
-    # else
       session[:live_id] = nil
       @live = Live.find(params[:id])
       session[:live_id] = @live.id
-    # end
   end
 
   def authenticate_live
-    # debugger
     unless @current_user.staff_lives.ids.include?(params[:id].to_i)
       flash[:notice] = "Sorry, please try again."
       redirect_to user_lives_path(user_id: @current_user)
-    end
-  end
-
-  # ユーザー関係
-  def set_current_user
-    @current_user = User.find(session[:user_id])
-  end
-
-  def authenticate_user
-    if @current_user == nil
-      flash[:notice] = "Need to Login"
-      redirect_to root_path
     end
   end
 
