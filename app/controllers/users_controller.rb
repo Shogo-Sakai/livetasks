@@ -18,15 +18,12 @@ class UsersController < ApplicationController
   end
 
   def login
-    # debugger
     @user = User.find_by(email: params[:email])
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      session[:live_id] = nil
+    if @user && @user.valid_password?(params[:password])
+      sign_in @user
       flash[:notice]="Login Success!!"
       redirect_to user_lives_path(user_id:@user.id)
     else
-      # debugger
       @error_message = "E-mail or Password is not right."
       @email = params[:email]
       @password = params[:password]
@@ -35,8 +32,9 @@ class UsersController < ApplicationController
   end
 
   def logout
-    session[:user_id] = nil
-    session[:live_id] = nil
+    
+    # session[:user_id] = nil
+    # session[:live_id] = nil
     flash[:notice] = "Logout Success."
     redirect_to root_path
   end
