@@ -39,6 +39,15 @@
             </div>
           </div>
 
+          <%# パスワード確認 %>
+          <div class="row password">
+            <div class="input-field col s12">
+              <%= f.text_field :password_confirmation, id:"password_confirmation", type:"password", class:"validate" %>
+              <%= f.label :password_confirmation, "※Password confirmation", class:"red-text" %>
+            </div>
+          </div>
+
+
           <%# 誕生日 %>
           <div class="row birthyear birthmonth birthday">
             <%= f.label :birthday %>

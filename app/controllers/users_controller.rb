@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_birthdate, only: [:signup, :create, :edit, :update]
-  before_action :authenticate_user, only: [:show, :edit]
-  before_action :forbid_login_user, only: [:login_form, :login, :signup, :create]
+  before_action :set_birthdate,       only: [:signup, :create, :edit, :update]
+  before_action :set_user,            only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user,   only: [:show, :edit]
+  before_action :forbid_login_user,   only: [:login_form, :login, :signup, :create]
   before_action :ensure_correct_user, only: [:edit]
 
   def index
@@ -19,12 +20,12 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.valid_password?(params[:password])
       sign_in @user
-      flash[:notice]="Login Success!!"
+      flash[:notice] = "Login Success!!"
       redirect_to user_lives_path(user_id:@user.id)
     else
       @error_message = "E-mail or Password is not right."
-      @email = params[:email]
-      @password = params[:password]
+      @email         = params[:email]
+      @password      = params[:password]
       render("/users/login_form")
     end
   end
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      flash[:notice]="Created an account!!"
+      flash[:notice] = "Created an account!!"
       redirect_to user_lives_path(user_id: @user.id)
     else
       render :signup
@@ -53,7 +54,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       @user.save
       flash[:notice] = "Edit Success!!"
-      # debugger
+      sign_in @user
       redirect_to user_path(params[:id])
     else
       render "users/edit"
@@ -64,10 +65,10 @@ class UsersController < ApplicationController
     if @user.destroy
       session[:user_id] = nil
       session[:live_id] = nil
-      flash[:notice] = "User Deleted."
+      flash[:notice]    = "User Deleted."
       redirect_to root_path
     else
-      @error_message = "Has some error. Please check again."
+      @error_message    = "Has some error. Please check again."
       render :show
     end
   end
@@ -82,7 +83,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      # debugger
       params[:user].permit(:nickname, :email, :password, :password_confirmation, :profile, :birthyear, :birthmonth, :birthday, :age, :gender, :image)
     end
 
