@@ -34,9 +34,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # debugger
     if @user.save
-      session[:user_id] = @user.id
+      sign_in @user
+      flash[:notice]="Created an account!!"
       redirect_to user_lives_path(user_id: @user.id)
     else
       render :signup
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.where('nickname LIKE(?) AND id != ?', "%#{params[:keyword]}%", @current_user)
+    @users = User.where('nickname LIKE(?) AND id != ?', "%#{params[:keyword]}%", current_user)
     respond_to do |format|
       format.html
       format.json

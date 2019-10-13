@@ -8,14 +8,14 @@ class LivesController < ApplicationController
 
   def new
     @live = Live.new
-    @live.users << @current_user
+    @live.users << current_user
   end
 
   def create
     @live = Live.new(live_params)
     if @live.save
       flash[:notice] = "Created new Live Project!"
-      redirect_to "/users/#{@current_user.id}/lives/#{@live.id}"
+      redirect_to "/users/#{current_user.id}/lives/#{@live.id}"
       session[:live_id] = @live.id
     else
       @error_message = "Has some error. Please check again."
@@ -32,7 +32,7 @@ class LivesController < ApplicationController
     if @live.update(live_params)
       @live.save
       flash[:notice] = "Edit Success!"
-      redirect_to "/users/#{@current_user.id}/lives/#{@live.id}"
+      redirect_to "/users/#{current_user.id}/lives/#{@live.id}"
     else
       @error_message = "Has some error. Please check again."
       render :edit
@@ -44,7 +44,7 @@ class LivesController < ApplicationController
     if live.destroy
       session[:live_id] = nil
       flash[:notice] = "Project Deleted."
-      redirect_to "/users/#{@current_user.id}/lives"
+      redirect_to "/users/#{current_user.id}/lives"
     else
       @error_message = "Has some error. Please check again."
       render :index
@@ -73,9 +73,9 @@ class LivesController < ApplicationController
   end
 
   def authenticate_live
-    unless @current_user.staff_lives.ids.include?(params[:id].to_i)
+    unless current_user.staff_lives.ids.include?(params[:id].to_i)
       flash[:notice] = "Sorry, please try again."
-      redirect_to user_lives_path(user_id: @current_user)
+      redirect_to user_lives_path(user_id: current_user)
     end
   end
 

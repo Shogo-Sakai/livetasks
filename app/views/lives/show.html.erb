@@ -1,8 +1,8 @@
-<% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+<% cache current_user, expires_in: 1.minutes, skip_digest: true do %>
   <%= render "lives/header" %>
 <% end %>
 <div class="row contents">
-  <% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+  <% cache current_user, expires_in: 1.minutes, skip_digest: true do %>
     <%= render 'lives/sidenav', class:"col s1" %>
   <% end %>
   <div class="main-contents ">

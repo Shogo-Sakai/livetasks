@@ -1,14 +1,14 @@
-<% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+<% cache current_user, expires_in: 1.minutes, skip_digest: true do %>
   <%= render "lives/header" %>
 <% end %>
   <div class="row contents">
-    <% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+    <% cache current_user, expires_in: 1.minutes, skip_digest: true do %>
       <%= render 'lives/sidenav', class:"col " %>
     <% end %>
   <div class="main-contents-new col">
     <div class="main-contents-new__input">
       <div class="main-contents-new__input__box">
-      <%= form_with model: @live, url: "/users/#{@current_user.id}/lives/#{@live.id}", local: true do |f| %>
+      <%= form_with model: @live, url: "/users/#{current_user.id}/lives/#{@live.id}", local: true do |f| %>
         <form>
 
           <%# タイトル %>
@@ -130,11 +130,11 @@
           <div class="row staff">
             <div class="col s12" id ="live-staffs">
               <%= f.label :staff, "Staffs" %>
-              <div class='live-staff' id= <%= @current_user.id %>>
-                <input name='live[user_ids][]' type='hidden' value='<%= @current_user.id %>'>
-                <p class='live-staff__name'><%= @current_user.nickname %></p>
+              <div class='live-staff' id= <%= current_user.id %>>
+                <input name='live[user_ids][]' type='hidden' value='<%= current_user.id %>'>
+                <p class='live-staff__name'><%= current_user.nickname %></p>
               </div>
-              <% @live.users.where.not(id: @current_user.id).each do |user| %>
+              <% @live.users.where.not(id: current_user.id).each do |user| %>
                 <div class='live-staff' id='<%= user.id %>'>
                   <input name='live[user_ids][]' type='hidden' value='<%= user.id %>'>
                   <p class='live-staff__name'><%= user.nickname %></p>

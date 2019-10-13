@@ -2,14 +2,14 @@
   <div class="row header__container ">
     <div class="header__container__user-info col s3">
       <div class="header__container__user-info__image">
-        <%if @current_user.image?%>
-          <%= image_tag @current_user.image_url, size:"100x100", class: "circle"%>
+        <%if current_user.image?%>
+          <%= image_tag current_user.image_url, size:"100x100", class: "circle"%>
         <% else %>
           <%= image_tag "/assets/home_logo.JPG",size:"100x100", class:"circle" %>
         <% end %>
       </div>
       <div class="header__container__user-info__profile">
-        <p><%= @current_user.nickname %></p>
+        <p><%= current_user.nickname %></p>
       </div>
     </div>
     <div class="header__container__task-info col s6">
@@ -18,7 +18,7 @@
           <% if session[:live_id] %>
             <li class="livetitle"><%= Live.find(session[:live_id]).name %></li>
             <p>Your Tasks</p>
-            <% @current_user.tasks.where(live_id: session[:live_id]).each do |task| %>
+            <% current_user.tasks.where(live_id: session[:live_id]).each do |task| %>
               <li class="checkbox-row">
                   <% if task.finish == true %>
                     <label>
@@ -45,8 +45,8 @@
     <div class="header__container__function col s3">
       <div class="header__container__function__menu">
         <ul class="header__container__function__menu__list ">
-          <li class="waves-effect waves-teal"><%= link_to "Home", "/users/#{@current_user.id}/lives" %></li>
-          <li class="waves-effect waves-teal"><%= link_to "New Live", "/users/#{@current_user.id}/lives/new" %></li>
+          <li class="waves-effect waves-teal"><%= link_to "Home", "/users/#{current_user.id}/lives" %></li>
+          <li class="waves-effect waves-teal"><%= link_to "New Live", "/users/#{current_user.id}/lives/new" %></li>
           <li class="waves-effect waves-teal"><%= link_to "All Users", "/users" %></li>
           <li class="waves-effect waves-teal"><%= link_to "Logout", current_user_destroy_path, method:"DELETE" %></li>
         </ul>

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def forbid_login_user
     if current_user
       flash[:notice] = "You are already logined."
-      redirect_to user_lives_path(user_id: @current_user)
+      redirect_to user_lives_path(user_id: current_user)
     end
   end
 
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   def ensure_correct_user
     if current_user.id != params[:id].to_i
       flash[:notice] = "You don't have access authorizations."
-      redirect_to user_lives_path(user_id: @current_user)
+      redirect_to user_lives_path(user_id: current_user)
     end
   end
 

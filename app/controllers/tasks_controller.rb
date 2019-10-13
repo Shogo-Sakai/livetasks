@@ -15,7 +15,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     if @task.save
       flash[:notice] = "Made a new task."
-      redirect_to "/users/#{@current_user.id}/lives/#{@live.id}/#tasks"
+      redirect_to "/users/#{current_user.id}/lives/#{@live.id}/#tasks"
     else
       @error_message = "Has some error. Please check again."
       render :new
@@ -29,7 +29,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       @task.save
       flash[:notice] = "Edit Success!"
-      redirect_to "/users/#{@current_user.id}/lives/#{@live.id}/#tasks"
+      redirect_to "/users/#{current_user.id}/lives/#{@live.id}/#tasks"
     else
       @error_message = "Has some error. Please check again."
       render :edit
@@ -38,7 +38,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.delete
-    redirect_to "/users/#{@current_user.id}/lives/#{@live.id}/#tasks"
+    redirect_to "/users/#{current_user.id}/lives/#{@live.id}/#tasks"
     flash[:notice] = "Task Deleted"
   end
 
@@ -64,7 +64,7 @@ class TasksController < ApplicationController
 
   def set_current_items
     @live = Live.find(session[:live_id])
-    @current_user = User.find(session[:user_id])
+    current_user = User.find(session[:user_id])
   end
   
 end
