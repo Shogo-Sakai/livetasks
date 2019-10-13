@@ -64,7 +64,6 @@ class TasksController < ApplicationController
 
   def set_current_items
     @live = Live.find(session[:live_id])
-    current_user = User.find(session[:user_id])
   end
   
 end
