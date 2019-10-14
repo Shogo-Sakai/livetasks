@@ -63,7 +63,6 @@ class UsersController < ApplicationController
 
   def destroy
     if @user.destroy
-      session[:user_id] = nil
       session[:live_id] = nil
       flash[:notice]    = "User Deleted."
       redirect_to root_path
