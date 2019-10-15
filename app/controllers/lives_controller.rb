@@ -1,24 +1,21 @@
 class LivesController < ApplicationController
-  before_action :set_current_user
   before_action :authenticate_live, except: [:index, :new, :create]
   before_action :authenticate_user
   before_action :set_session_live, only: :show
   before_action :set_live_tasks, only: :show
-  # before_action :ensure_correct_live, only: :show
   def index
   end
 
   def new
     @live = Live.new
-    @live.users << @current_user
+    @live.users << current_user
   end
 
   def create
     @live = Live.new(live_params)
-    # debugger
     if @live.save
       flash[:notice] = "Created new Live Project!"
-      redirect_to "/users/#{@current_user.id}/lives/#{@live.id}"
+      redirect_to "/users/#{current_user.id}/lives/#{@live.id}"
       session[:live_id] = @live.id
     else
       @error_message = "Has some error. Please check again."
@@ -35,7 +32,7 @@ class LivesController < ApplicationController
     if @live.update(live_params)
       @live.save
       flash[:notice] = "Edit Success!"
-      redirect_to "/users/#{@current_user.id}/lives/#{@live.id}"
+      redirect_to "/users/#{current_user.id}/lives/#{@live.id}"
     else
       @error_message = "Has some error. Please check again."
       render :edit
@@ -47,7 +44,7 @@ class LivesController < ApplicationController
     if live.destroy
       session[:live_id] = nil
       flash[:notice] = "Project Deleted."
-      redirect_to "/users/#{@current_user.id}/lives"
+      redirect_to "/users/#{current_user.id}/lives"
     else
       @error_message = "Has some error. Please check again."
       render :index
@@ -70,33 +67,15 @@ class LivesController < ApplicationController
   end
 
   def set_session_live
-    # unless @current_user.staff_lives.ids.include?(params[:live_id])
-    #   flash[:notice] = "Sorry, please try again."
-    #   redirect_to user_lives_path(user_id: @current_user)
-    # else
       session[:live_id] = nil
       @live = Live.find(params[:id])
       session[:live_id] = @live.id
-    # end
   end
 
   def authenticate_live
-    # debugger
-    unless @current_user.staff_lives.ids.include?(params[:id].to_i)
+    unless current_user.staff_lives.ids.include?(params[:id].to_i)
       flash[:notice] = "Sorry, please try again."
-      redirect_to user_lives_path(user_id: @current_user)
-    end
-  end
-
-  # ユーザー関係
-  def set_current_user
-    @current_user = User.find(session[:user_id])
-  end
-
-  def authenticate_user
-    if @current_user == nil
-      flash[:notice] = "Need to Login"
-      redirect_to root_path
+      redirect_to user_lives_path(user_id: current_user)
     end
   end
 

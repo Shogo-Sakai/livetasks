@@ -1,8 +1,8 @@
-<% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+<% cache current_user, expires_in: 1.minutes, skip_digest: true do %>
   <%= render "lives/header" %>
 <% end %>
 <div class="row contents">
-  <% cache @current_user, expires_in: 1.minutes, skip_digest: true do %>
+  <% cache current_user, expires_in: 1.minutes, skip_digest: true do %>
     <%= render 'lives/sidenav', class:"col "%>
   <% end %>
   <div class="container-user-show center cards">
@@ -18,7 +18,7 @@
       <div class="card-content">
         <p>User ID：<%= @user.id%></p>
         <p>Name：<%= @user.nickname%></p>
-        <% if @user.id == @current_user.id %>
+        <% if @user.id == current_user.id %>
         <p>E-mail Adress：<%= @user.email%></p>
         <% end %>
         <p>Birthday：<%= @user.birthyear%>年<%= @user.birthmonth%>月<%= @user.birthday%>日</p>
@@ -33,10 +33,10 @@
           <% end %>
         <% end %>
       </div>
-      <% if @user.id == @current_user.id %>
+      <% if @user.id == current_user.id %>
         <div class="card-action">
-          <a href="/users/<%= @current_user.id %>/edit">Edit User Account</a>
-          <a href="/users/<%= @current_user.id %>" data-confirm="Are you sure?" data-method="DELETE" class="red-text">delete</a>
+          <a href="/users/<%= current_user.id %>/edit">Edit User Account</a>
+          <a href="/users/<%= current_user.id %>" data-confirm="Are you sure?" data-method="DELETE" class="red-text">delete</a>
         </div>
       <% end %>
     </div>

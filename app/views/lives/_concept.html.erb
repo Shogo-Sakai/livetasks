@@ -79,8 +79,8 @@
         </div>
       <% end %>
       <div class="main-contents-container__box__wrapper__edit col s12">
-        <%= link_to "edit live concept","/users/#{@current_user.id}/lives/#{@live.id}/edit", class:"btn edit" %>
-        <%= link_to "delete project","/users/#{@current_user.id}/lives/#{@live.id}/", class:"btn red delete", method:"delete" %>
+        <%= link_to "edit live concept","/users/#{current_user.id}/lives/#{@live.id}/edit", class:"btn edit" %>
+        <%= link_to "delete project","/users/#{current_user.id}/lives/#{@live.id}/", class:"btn red delete", method:"delete" %>
       </div>
     </div>
   </div> 
