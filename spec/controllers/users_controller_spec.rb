@@ -1,18 +1,30 @@
 require "rails_helper"
-describe "User" do
 
-  describe "#index" do
-    it "is rendered to user index page"
+describe UsersController do
+
+  context "GET #index" do
+    it "render to the user index page" do
+      get :index
+      expect(response).to render_template :index
+    end
   end
 
-  describe "#signup" do
-    it "is rendered to signup page"
+  context "GET #signup" do
+    it "should have a current_user" do
+      user = create(:user)
+      sign_in user
+      expect(subject.current_user).to_not eq(nil)
+    end
   end
 
-  describe "#login" do
+  context "GET #login" do
     it "is invalid without email" do
-      # user = build(:user, email:"")
-      # expect(user.errors[:email]).to include("can't be blank")
+      user  = create(:user)
+      login = User.find_by(email: "")
+      sign_in user
+      post :login
+      debugger
+      expect(user.errors[:email]).to include("can't be blank")
     end
 
     it "is invalid without password"
@@ -20,7 +32,7 @@ describe "User" do
     it "is rendered to login form page if failed"
   end
 
-  describe "#create" do
+  context "#create" do
     it "is invalid without nickname" do
       user = build(:user, nickname: "")
       user.valid?
@@ -54,19 +66,19 @@ describe "User" do
     it "is rendered to signup page if create account failed"
     end
 
-  describe "#update" do
+  context "#update" do
     it "is invalid without email"
     it "is invalid without password"
     it "is invalid without password confirmation"
     it "is valid with email, password and password confirmation"
   end
 
-  describe "#destroy" do
+  context "#destroy" do
     it "is invalid without user"
     it "is rendered to show page"
   end
 
-  describe "#search" do
+  context "#search" do
     it "is valid with keyword"
   end
 
