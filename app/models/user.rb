@@ -13,11 +13,11 @@ class User < ApplicationRecord
   
   # アソシエーション
   has_many :lives
-  has_many :staffs , dependent: :delete_all
-  has_many :staff_lives, through: :staffs , source: :live, dependent: :delete_all
-  has_many :tasks, dependent: :delete_all
+  has_many :staffs ,     dependent: :delete_all
+  has_many :staff_lives, through: :staffs ,     source: :live, dependent: :delete_all
+  has_many :tasks,       dependent: :delete_all
 
   # バリデーション
   validates :profile,  length: {maximum: 140}
-
+  validates :nickname, presence: true
 end
