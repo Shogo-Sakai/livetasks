@@ -87,4 +87,5 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
+# ダミーデータ作成
 gem 'faker'

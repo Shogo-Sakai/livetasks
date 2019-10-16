@@ -3,6 +3,7 @@ class LivesController < ApplicationController
   before_action :authenticate_user
   before_action :set_session_live, only: :show
   before_action :set_live_tasks, only: :show
+
   def index
   end
 

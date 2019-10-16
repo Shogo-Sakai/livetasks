@@ -51,7 +51,7 @@ describe UsersController do
 
   end
 
-  context "#create" do
+  context "POST #create" do
 
     it "is redirected to user_lives_path with nickname, email, password and password confirmation" do
       user = create(:user)
@@ -81,7 +81,7 @@ describe UsersController do
 
   end
 
-  context "#edit" do
+  context "GET #edit" do
     it "assigns the requested user to @user" do
       user = create(:user)
       sign_in user
@@ -97,7 +97,7 @@ describe UsersController do
     end
   end
 
-  context "#update" do
+  context "PATCH #update" do
     before do
       @user = create(:user)
       sign_in @user
@@ -130,7 +130,7 @@ describe UsersController do
 
   end
 
-  context "#show" do
+  context "GET #show" do
 
     it "is redirected to user show page" do
       user = create(:user)
@@ -141,7 +141,7 @@ describe UsersController do
 
   end
 
-  context "#destroy" do
+  context "DELETE #destroy" do
     before do
       @user = create(:user)
       sign_in @user
