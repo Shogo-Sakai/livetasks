@@ -7,9 +7,21 @@ describe UsersController do
       get :index
       expect(response).to render_template :index
     end
+
+    it "populates an array of users" do
+      users = create_list(:user, 5)
+      get :index
+      expect(assigns(:users)).to match(users)
+    end
   end
 
   context "GET #signup" do
+
+    it "render to the signup page" do
+      get :signup
+      expect(response).to render_template :signup
+    end
+
     it "should have a current_user" do
       user = create(:user)
       sign_in user
@@ -18,68 +30,133 @@ describe UsersController do
   end
 
   context "GET #login" do
-    it "is invalid without email" do
-      user  = create(:user)
-      login = User.find_by(email: "")
-      sign_in user
-      post :login
-      debugger
-      expect(user.errors[:email]).to include("can't be blank")
+    before do
+      @user = create(:user)
     end
 
-    it "is invalid without password"
-    it "is valid with email and passoword"
-    it "is rendered to login form page if failed"
-  end
-
-  context "#create" do
-    it "is invalid without nickname" do
-      user = build(:user, nickname: "")
-      user.valid?
-      expect(user.errors[:nickname]).to include("can't be blank")
+    it "is valid with email and passoword" do
+      post :login, params: {email: @user.email, password: @user.password}
+      expect(response).to redirect_to user_lives_path(user_id: @user.id)
     end
 
     it "is invalid without email" do
-      user = build(:user, email:"")
-      user.valid?
-      expect(user.errors[:email]).to include("can't be blank")
+      post :login, params: {email: "", password: @user.password}
+      expect(response).to render_template :login_form
     end
 
     it "is invalid without password" do
-      user = build(:user, password:"")
-      user.valid?
-      expect(user.errors[:password]).to include("can't be blank")
+      post :login, params: {email: @user.email, password: ""}
+      expect(response).to render_template :login_form
+    end
+
+  end
+
+  context "#create" do
+
+    it "is redirected to user_lives_path with nickname, email, password and password confirmation" do
+      user = create(:user)
+      post :create, params: {user:{nickname:"nickname_test", email:"email@test.com", password:"nickname_test", password_confirmation:"nickname_test"}}
+      expect(response).to redirect_to user_lives_path(user_id: user.id + 1)
+    end
+
+    it "is rendered to login_form without nickname" do
+      post :create, params: {user:{nickname:"", email:"email@test.com", password:"nickname_test", password_confirmation:"nickname_test"}}
+      expect(response).to render_template :signup
+    end
+
+    it "is rendered to signup page without email" do
+      post :create, params: {user:{nickname:"nickname_test", email:"", password:"nickname_test", password_confirmation:"nickname_test"}}
+      expect(response).to render_template :signup
+    end
+
+    it "is rendered to signup page without password" do
+      post :create, params: {user:{nickname:"nickname_test", email:"email@test.com", password:"", password_confirmation:"nickname_test"}}
+      expect(response).to render_template :signup
+    end
+
+    it "is rendered to signup page without password confirmation" do
+      post :create, params: {user:{nickname:"nickname_test", email:"email@test.com", password:"nickname_test", password_confirmation:""}}
+      expect(response).to render_template :signup
+    end
+
+  end
+
+  context "#edit" do
+    it "assigns the requested user to @user" do
+      user = create(:user)
+      sign_in user
+      get :edit, params:{id: user.id}
+      expect(assigns(:user)).to eq user
+    end
+
+    it "renders the :edit template" do
+      user = create(:user)
+      sign_in user
+      get :edit, params:{id: user.id}
+      expect(response).to render_template :edit
+    end
+  end
+
+  context "#update" do
+    before do
+      @user = create(:user)
+      sign_in @user
+    end
+
+    it "is redirected with email, password and password confirmation" do 
+      patch :update, params: {id: @user.id, user:{nickname:"nickname_test", email:"email@test.com", password:"nickname_test", password_confirmation:"nickname_test"}}
+      expect(@user.reload.nickname).to redirect_to user_path(id: @user.id)
+    end
+
+    it "is invalid without nickname" do
+      patch :update, params: {id: @user.id, user:{nickname:"", email:"email@test.com", password:"nickname_test", password_confirmation:"nickname_test"}}
+      expect(response).to render_template :edit
+    end
+
+    it "is invalid without email" do
+      patch :update, params: {id: @user.id, user:{nickname:"nickname_test", email:"", password:"nickname_test", password_confirmation:"nickname_test"}}
+      expect(response).to render_template :edit
+    end
+    
+    it "is invalid without password" do
+      patch :update, params: {id: @user.id, user:{nickname:"nickname_test", email:"email@test.com", password:"", password_confirmation:"nickname_test"}}
+      expect(response).to render_template :edit
     end
 
     it "is invalid without password confirmation" do
-      user = build(:user, password_confirmation:"")
-      user.valid?
-      expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+      patch :update, params: {id: @user.id, user:{nickname:"nickname_test", email:"email@test.com", password:"nickname_test", password_confirmation:""}}
+      expect(response).to render_template :edit
     end
 
-    it "is valid with nickname, email, password and password confirmation" do
-      user = build(:user)
-      user.valid?
-      expect(user).to be_valid
+  end
+
+  context "#show" do
+
+    it "is redirected to user show page" do
+      user = create(:user)
+      sign_in user
+      get :show, params: {id: user}
+      expect(response).to render_template :show
     end
 
-    it "is rendered to signup page if create account failed"
-    end
-
-  context "#update" do
-    it "is invalid without email"
-    it "is invalid without password"
-    it "is invalid without password confirmation"
-    it "is valid with email, password and password confirmation"
   end
 
   context "#destroy" do
-    it "is invalid without user"
-    it "is rendered to show page"
-  end
+    before do
+      @user = create(:user)
+      sign_in @user
+    end
 
-  context "#search" do
-    it "is valid with keyword"
+    it "is redirected when user is deleted" do
+      delete :destroy, params: {id: @user.id}
+      expect(response).to redirect_to root_path
+    end
+    
+    it "is deleted from database" do
+      users = create_list(:user, 5)
+      delete :destroy, params: {id: @user.id}
+      expect(User.count).to eq 5
+    end
   end
 
 end
