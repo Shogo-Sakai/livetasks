@@ -70,7 +70,7 @@ describe TasksController do
       expect(Task.count).to eq 0
     end
   end
-  
+
   context "GET show" do 
     it "is rendered to show page" do
       task = create(:task, user_id: @user.id, live_id: @live.id)
